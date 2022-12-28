@@ -5,4 +5,5 @@ return {
 	'folke/neodev.nvim',
 	'b0o/schemastore.nvim',
 	{ 'catppuccin/nvim', name = 'catppuccin' },
+	{ 'windwp/nvim-autopairs', config = { check_ts = true }, event = 'BufReadPre' }
 }
