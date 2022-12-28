@@ -1,6 +1,6 @@
 local M = {
 	'mattn/emmet-vim',
-	ft = { 'html', 'css', 'javascriptreact', 'jsx', 'typescriptreact', 'tsx' }
+	ft = { 'html', 'css', 'scss', 'javascriptreact', 'jsx', 'typescriptreact', 'tsx' }
 }
 
 function M.init()
@@ -9,7 +9,7 @@ function M.init()
 
 	vim.api.nvim_create_autocmd('FileType', {
 		group = vim.api.nvim_create_augroup('user_emmet', { clear = true }),
-		pattern = { 'html', 'css', 'javascriptreact', 'jsx', 'typescriptreact', 'tsx' },
+		pattern = { 'html', 'css', 'scss', 'javascriptreact', 'jsx', 'typescriptreact', 'tsx' },
 		command = 'EmmetInstall'
 	})
 end
