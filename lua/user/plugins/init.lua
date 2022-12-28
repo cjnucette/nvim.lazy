@@ -7,5 +7,6 @@ return {
 	'b0o/schemastore.nvim',
 	{ 'catppuccin/nvim', name = 'catppuccin' },
 	{ 'windwp/nvim-autopairs', config = { check_ts = true }, event = 'BufReadPre' },
-	{ 'lewis6991/gitsigns.nvim', config = true, event = 'BufReadPre' }
+	{ 'lewis6991/gitsigns.nvim', config = true, event = 'BufReadPre' },
+	{ 'ethanholz/nvim-lastplace', config = true, event = 'BufReadPre' }
 }
