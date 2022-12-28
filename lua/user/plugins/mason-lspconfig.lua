@@ -1,6 +1,6 @@
 local M = {
 	'williamboman/mason-lspconfig.nvim',
-	name = 'mason-lspconfig',
+	event = 'VimEnter',
 	dependencies = {
 		'williamboman/mason.nvim'
 	}
