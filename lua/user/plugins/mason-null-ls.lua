@@ -2,11 +2,11 @@ local M = {
 	'jay-babu/mason-null-ls.nvim',
 }
 
-M.linters = { 'prettier', 'shfmt', 'shellcheck' }
 
 function M.config()
+	local linters = { 'prettier', 'shfmt', 'shellcheck' }
 	require('mason-null-ls').setup({
-		ensure_installed = M.linters
+		ensure_installed = linters
 	})
 
 end
