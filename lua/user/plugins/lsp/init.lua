@@ -5,14 +5,15 @@ local M = {
 	dependencies = {
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
-		'jose-elias-alvarez/typescript.nvim'
+		'jose-elias-alvarez/typescript.nvim',
+		'simrat39/rust-tools.nvim',
+		'lvimuser/lsp-inlayhints.nvim',
 	}
 }
 
 function M.config()
 	require('neodev').setup()
 
-	local ih_ok, inlayhints = pcall(require, 'inlayhints')
 	-- lspinfo window border
 	require('lspconfig.ui.windows').default_options.border = 'rounded'
 
@@ -32,9 +33,7 @@ function M.config()
 
 		-- inlayhints
 		if client.server_capabilities.inlayHintProvider then
-			if ih_ok then
-				inlayhints.on_attach(client, bufnr, true)
-			end
+			require('lsp-inlayhints').on_attach(client, bufnr, true)
 		end
 	end
 
@@ -73,7 +72,7 @@ function M.config()
 	end
 
 	local servers = require('mason-lspconfig').get_installed_servers()
-	local skipped_servers = {'tsserver'}
+	local skipped_servers = { 'tsserver', 'rust_analyzer' }
 
 	for _, lsp in ipairs(servers) do
 		local opts = get_server_options(lsp)
@@ -82,11 +81,24 @@ function M.config()
 			require('lspconfig')[lsp].setup(opts)
 		end
 
-		if lsp == 'tsserver'  then
+		if lsp == 'tsserver' then
 			if pcall(require, 'typescript') then
 				require('typescript').setup({ server = opts })
 			else
 				require('lspconfig')['tsserver'].setup(opts)
+			end
+		end
+
+		if lsp == 'rust_analyzer' then
+			if pcall(require, 'rust-tools') then
+				require('rust-tools').setup({
+					server = opts,
+					tools = {
+						inlay_hints = { auto = false }
+					}
+				})
+			else
+				require('lspconfig')['rust_analyzer'].setup(opts)
 			end
 		end
 	end
