@@ -7,6 +7,7 @@ vim.opt.hidden = true
 vim.opt.mouse = 'a'
 vim.opt.modeline = true
 vim.opt.updatetime = 250
+vim.opt.autoread = true
 vim.cmd([[set shortmess+=c]])
 
 vim.opt.number = true
@@ -55,11 +56,6 @@ if vim.fn.exists('+winblend') then -- feature detection ;)
 end
 
 -- folding
-local function my_fold_text()
-	local indent = vim.fn.indent(vim.v.foldstart) - vim.opt.shiftwidth:get()
-	return string.rep(' ', indent) .. vim.fn.getline(vim.v.foldstart) .. '...' .. vim.fn.getline(vim.v.foldend)
-end
-
 vim.opt.foldenable = true
 vim.cmd([[ set foldtext=getline(v:foldstart).'...'.trim(getline(v:foldend)) ]])
 vim.opt.foldnestmax = 3
