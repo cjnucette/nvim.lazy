@@ -1,6 +1,9 @@
 local M = {
 	'jose-elias-alvarez/null-ls.nvim',
 	event = 'BufReadPre',
+	dependencies = {
+		'jose-elias-alvarez/typescript.nvim',
+	}
 }
 
 function M.config()
@@ -50,6 +53,7 @@ function M.config()
 			diagnostics.shellcheck,
 			code_actions.shellcheck,
 			code_actions.gitsigns,
+			require('typescript.extensions.null-ls.code-actions'),
 		},
 		update_in_insert = false
 	})

@@ -5,6 +5,7 @@ local M = {
 	dependencies = {
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
+		'jose-elias-alvarez/typescript.nvim'
 	}
 }
 
@@ -48,15 +49,13 @@ function M.config()
 		['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' }),
 	}
 
-	-- local servers = require('user.plugins.mason-lspconfig').servers
-	local servers = require('mason-lspconfig').get_installed_servers()
-
-	for _, lsp in ipairs(servers) do
+	local function get_server_options(lsp)
 		local opts = {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			handlers = handlers
 		}
+
 		if pcall(require, 'user/plugins/lsp/lsp_servers/' .. lsp) then
 			local custom_opts = require('user/plugins/lsp/lsp_servers/' .. lsp)
 
@@ -70,7 +69,26 @@ function M.config()
 			end
 		end
 
-		require('lspconfig')[lsp].setup(opts)
+		return opts
+	end
+
+	local servers = require('mason-lspconfig').get_installed_servers()
+	local skipped_servers = {'tsserver'}
+
+	for _, lsp in ipairs(servers) do
+		local opts = get_server_options(lsp)
+
+		if not vim.tbl_contains(skipped_servers, lsp) then
+			require('lspconfig')[lsp].setup(opts)
+		end
+
+		if lsp == 'tsserver'  then
+			if pcall(require, 'typescript') then
+				require('typescript').setup({ server = opts })
+			else
+				require('lspconfig')['tsserver'].setup(opts)
+			end
+		end
 	end
 end
 
