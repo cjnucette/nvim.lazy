@@ -50,8 +50,8 @@ function M.config()
 		sources = {
 			formatting.prettier.with(prettier_conf()),
 			formatting.shfmt.with(shfmt_conf()),
-			diagnostics.shellcheck,
-			code_actions.shellcheck,
+			-- diagnostics.shellcheck,
+			-- code_actions.shellcheck,
 			code_actions.gitsigns,
 			require('typescript.extensions.null-ls.code-actions'),
 		},
