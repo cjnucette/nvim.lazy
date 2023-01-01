@@ -1,7 +1,7 @@
 local M = {
 	'numToStr/Comment.nvim',
 	keys = { 'gcc', 'gc', 'gbc', 'gb' },
-	event = 'InsertEnter'
+	event = 'BufReadPre'
 }
 
 function M.config()
