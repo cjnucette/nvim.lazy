@@ -7,6 +7,17 @@ end
 
 opts.settings = {
 	css = {
+		lint = {
+			unknownAtRules = 'ignore'
+		},
+		format = {
+			enable = true
+		}
+	},
+	scss = {
+		lint = {
+			unknownAtRules = 'ignore'
+		},
 		format = {
 			enable = true
 		}
