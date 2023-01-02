@@ -7,7 +7,7 @@ autocmd(
 	{
 		desc = 'Use q to close the window',
 		group = user_cmds,
-		pattern = { 'help', 'man' },
+		pattern = { 'help', 'man', 'fugitive' },
 		command = 'nnoremap <buffer> q :quit<cr>'
 	}
 )
