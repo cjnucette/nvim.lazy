@@ -5,9 +5,9 @@ local user_cmds = augroup('user_commands', { clear = true })
 autocmd(
 'FileType',
 	{
-		pattern = { 'help', 'man' },
-		group = user_cmds,
 		desc = 'Use q to close the window',
+		group = user_cmds,
+		pattern = { 'help', 'man' },
 		command = 'nnoremap <buffer> q :quit<cr>'
 	}
 )
@@ -15,8 +15,8 @@ autocmd(
 autocmd(
 'TextYankPost',
 	{
-		group = user_cmds,
 		desc = 'Highlight yanked objects',
+		group = user_cmds,
 		callback = function()
 			vim.highlight.on_yank({ higroup = 'Visual', timeout = 200 })
 		end
@@ -24,7 +24,8 @@ autocmd(
 )
 
 -- autocmd('BufWritePre', {
--- 	group = augroup('auto_create_dir', { clear = true }),
+--  desc = "Create directory when needed, when saving a file"
+-- 	group = user_cmds,
 -- 	callback = function(event)
 -- 		local file = vim.loop.fs_realpath(event.match) or event.match
 --
@@ -35,15 +36,16 @@ autocmd(
 -- 	end
 -- })
 
-local skeletons = augroup('Skeletons', { clear = true })
 autocmd('BufNewFile', {
-	group = skeletons,
+	desc = 'Load template when a new empty html file is created.',
+	group = user_cmds,
 	pattern = '*.html',
 	command = [[:0r ~/.config/nvim/templates/skeleton.html]]
 })
 
 autocmd('BufNewFile', {
-	group = skeletons,
+	desc = 'Load template when a new empty shell script is created.',
+	group = user_cmds,
 	pattern = '*.sh',
 	command = [[:0r ~/.config/nvim/templates/skeleton.sh]]
 })

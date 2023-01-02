@@ -1,17 +1,19 @@
 local M = {}
 
 function M.setup(client, bufnr)
+	local user_lsp_cmds = vim.api.create_augroup('user_lsp_autocmds', { clear = true })
 	if client.server_capabilities.documentHighlightProvider then
-		local hwuc = vim.api.nvim_create_augroup('HighlightWordUnderCursor', { clear = true })
 		vim.api.nvim_create_autocmd('CursorHold', {
-			group = hwuc,
+			desc = 'Highlight matching words of word under the cursor',
+			group = user_lsp_cmds,
 			buffer = bufnr,
 			callback = function()
 				vim.lsp.buf.document_highlight()
 			end,
 		})
 		vim.api.nvim_create_autocmd('CursorMoved', {
-			group = hwuc,
+			desc = 'Clear highlight matching words when cursor move',
+			group = user_lsp_cmds,
 			buffer = bufnr,
 			callback = function()
 				vim.lsp.buf.clear_references()
@@ -21,7 +23,8 @@ function M.setup(client, bufnr)
 
 	if client.supports_method('textDocument/formatting') then
 		vim.api.nvim_create_autocmd('BufWritePre', {
-			group = vim.api.nvim_create_augroup('FormatOnSave', { clear = true }),
+			desc = 'Format on file save',
+			group = user_lsp_cmds,
 			buffer = bufnr,
 			callback = function()
 				vim.lsp.buf.format()
