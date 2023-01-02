@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(client, bufnr)
-	local user_lsp_cmds = vim.api.create_augroup('user_lsp_autocmds', { clear = true })
+	local user_lsp_cmds = vim.api.nvim_create_augroup('user_lsp_autocmds', { clear = true })
 	if client.server_capabilities.documentHighlightProvider then
 		vim.api.nvim_create_autocmd('CursorHold', {
 			desc = 'Highlight matching words of word under the cursor',
