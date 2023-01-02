@@ -15,7 +15,7 @@ function M.config()
 	local config = {
 		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 		popup_border_style = 'rounded',
-		--  follow_current_file = false,
+		follow_current_file = true,
 		default_component_configs = {
 			git_status = {
 				symbols = {
