@@ -70,9 +70,9 @@ function M.config()
 		'diff',
 		-- colored = false,
 		symbols = {
-			added = signs.add .. ' ',
-			modified = signs.modify .. ' ',
-			removed = signs.delete .. ' '
+			added = signs.add,
+			modified = signs.modify,
+			removed = signs.delete
 		},
 		cond = has_space,
 	}
