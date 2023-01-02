@@ -173,8 +173,9 @@ function M.config()
 			lualine_a = {
 				{
 					'lazy',
-					fmt = function() return 'Plugin Manager%=' end,
-					icon = { '📦', color = { fg = 'orange' } },
+					fmt = function() return 'Lazy%=' end,
+					-- icon = { '📦', color = { fg = 'orange' } },
+					icon = '💤',
 				}
 			},
 			lualine_z = { my_location }
