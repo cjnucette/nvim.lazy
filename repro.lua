@@ -12,8 +12,8 @@ if not vim.loop.fs_stat(lazypath) then
 		'git',
 		'clone',
 		'--filter=blob:none',
-		'--single-branch',
 		'https://github.com/folke/lazy.nvim.git',
+		'--branch=stable',
 		lazypath,
 	})
 end
@@ -42,6 +42,6 @@ require('lazy').setup(plugins, {
 })
 
 -- add anything else here
-vim.opt.termguicolors = true
 -- do not remove the colorscheme!
+vim.opt.termguicolors = true
 vim.cmd([[colorscheme tokyonight]])
