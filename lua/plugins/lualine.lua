@@ -103,7 +103,7 @@ function M.config()
 
 			if lsp_attached() then
 				local space = has_space() and ' ' or ''
-				output = output .. space .. ' '
+				output = output .. space .. ''
 			end
 
 			return output
@@ -125,9 +125,17 @@ function M.config()
 	end
 
 	local function package_info()
-		if has_space() then
-			return require('package-info').get_status()
+		if not has_space() then
+			return ''
 		end
+		return require('package-info').get_status()
+	end
+
+	local function clock()
+		if not has_space() then
+			return ''
+		end
+		return ' ' .. os.date('%H:%M')
 	end
 
 	-- local function search_count()
@@ -242,7 +250,13 @@ function M.config()
 				require('lazy.status').updates,
 				cond = require('lazy.status').has_updates
 			}, package_info },
-			lualine_x = { 'lsp_progress', my_location },
+			lualine_x = {
+				{
+					'lsp_progress',
+					display_components = { 'lsp_client_name', 'spinner', { 'percentage' } }
+				},
+				my_location
+			},
 			lualine_y = { spaces, encoding, fileformat },
 			lualine_z = { filetype }
 		},
@@ -261,7 +275,8 @@ function M.config()
 					}
 				},
 				gps
-			}
+			},
+			lualine_z = { clock }
 		},
 		extensions = { neo_tree, toggleterm, package_manager, telescope, mason, checkhealth }
 	})
