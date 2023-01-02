@@ -11,5 +11,5 @@ vim.opt_local.path:append(vim.fn.stdpath('config') .. '/lua')
 -- vim.opt_local.includeexpr = vim.fn.substitute(vim.v.fname, '\\.', '/', 'g')
 vim.cmd [[setlocal includeexpr=substitute(v:fname,'\\.','/','g')]] -- so it resolves 'user.somefile' as 'user/somefile'
 
-require('user.utils').map('n', '<leader>cl', 'viwyoP(<c-r>*)<esc>', { buffer = 0 })
-require('user.utils').map('n', '<leader>cli', 'viwyoprint(vim.inspect(<c-r>*))<esc>', { buffer = 0 })
+require('utils').map('n', '<leader>cl', 'viwyoP(<c-r>*)<esc>', { buffer = 0 })
+require('utils').map('n', '<leader>cli', 'viwyoprint(vim.inspect(<c-r>*))<esc>', { buffer = 0 })

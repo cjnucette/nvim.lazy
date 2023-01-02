@@ -5,7 +5,7 @@ local M = {
 }
 
 function M.config()
-	local signs = require('user.utils').signs
+	local signs = require('utils').signs
 	local severities = {
 		'error',
 		'warning'

@@ -1,6 +1,6 @@
 local M = {}
-local signs = require('user.utils').signs
-local map = require('user.utils').map
+local signs = require('utils').signs
+local map = require('utils').map
 
 function M.setup()
 	vim.diagnostic.config({
@@ -16,15 +16,15 @@ function M.setup()
 		}
 	})
 
-	vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
-		local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
-		pcall(vim.diagnostic.reset, ns)
-		return true
-	end
-	 
+	-- vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
+	-- 	local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
+	-- 	pcall(vim.diagnostic.reset, ns)
+	-- 	return true
+	-- end
+
 	local sign = function(opts)
 		vim.fn.sign_define(
-			opts.name,
+		opts.name,
 			{
 				texthl = opts.name,
 				text = opts.text,

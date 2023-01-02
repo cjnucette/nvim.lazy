@@ -47,7 +47,7 @@ function M.config()
 end
 
 function M.init()
-	local map = require('user.utils').map
+	local map = require('utils').map
 
 	local Terminal = require('toggleterm.terminal').Terminal
 	local node = Terminal:new({ cmd = 'node', hidden = true })

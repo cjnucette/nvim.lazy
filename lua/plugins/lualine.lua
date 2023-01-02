@@ -12,10 +12,10 @@ local M = {
 
 function M.config()
 	local lualine = require('lualine')
-	local signs = require('user.utils').signs
-	local capitalize = require('user.utils').capitalize
-	local lsp_attached = require('user.utils').lsp_attached
-	local is_empty = require('user.utils').is_empty
+	local signs = require('utils').signs
+	local capitalize = require('utils').capitalize
+	local lsp_attached = require('utils').lsp_attached
+	local is_empty = require('utils').is_empty
 	local navic = require('nvim-navic')
 
 

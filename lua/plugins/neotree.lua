@@ -10,7 +10,7 @@ local M = {
 }
 
 function M.config()
-	local signs = require('user.utils').signs
+	local signs = require('utils').signs
 
 	local config = {
 		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab

@@ -17,12 +17,12 @@ function M.config()
 	-- lspinfo window border
 	require('lspconfig.ui.windows').default_options.border = 'rounded'
 
-	require('user.plugins.lsp.diagnostics').setup()
+	require('plugins.lsp.diagnostics').setup()
 
 	local on_attach = function(client, bufnr)
-		require('user.plugins.lsp.keys').setup(bufnr)
-		require('user.plugins.lsp.formatting').setup(client, bufnr)
-		require('user.plugins.lsp.autocmds').setup(client, bufnr)
+		require('plugins.lsp.keys').setup(bufnr)
+		require('plugins.lsp.formatting').setup(client, bufnr)
+		require('plugins.lsp.autocmds').setup(client, bufnr)
 
 		-- navic
 		if client.server_capabilities.documentSymbolProvider then
@@ -55,8 +55,8 @@ function M.config()
 			handlers = handlers
 		}
 
-		if pcall(require, 'user/plugins/lsp/lsp_servers/' .. lsp) then
-			local custom_opts = require('user/plugins/lsp/lsp_servers/' .. lsp)
+		if pcall(require, 'plugins/lsp/lsp_servers/' .. lsp) then
+			local custom_opts = require('plugins/lsp/lsp_servers/' .. lsp)
 
 			opts = vim.tbl_extend('force', opts, custom_opts)
 
