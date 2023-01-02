@@ -1,5 +1,5 @@
 return {
-	'folke/tokyonight.nvim',
+	{ 'folke/tokyonight.nvim', lazy = false, priority = 1000 },
 	'bluz71/vim-nightfly-colors',
 	'folke/neodev.nvim',
 	'b0o/schemastore.nvim',

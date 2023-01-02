@@ -1,4 +1,4 @@
-local map = require("user.utils").map
+local map = require('utils').map
 local opts = { buffer = 0 }
 
 vim.opt_local.wrap = true
