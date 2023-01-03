@@ -3,8 +3,15 @@ local M = {}
 
 M.map = function(mode, lhs, rhs, opts)
 	opts = opts or {}
-	opts.silent = true
-	opts.noremap = true
+	local isPlug = string.find(rhs, '<Plug>')
+
+	opts.silent = opts.silent or true
+
+	if isPlug then
+		opts.noremap = false
+	else
+		opts.noremap = opts.noremap or true
+	end
 	-- local options = { noremap = true, silent = true }
 	-- if opts then
 	--   options = vim.tbl_extend('force', options, opts)
@@ -27,7 +34,7 @@ M.signs = {
 	modify       = '~', -- 00b7: ·, Digraph: *-
 	ignore       = '!',
 	rename       = '', -- f553: 
-	-- git status types
+	-- git status
 	untracked    = '?', -- 003f: ?
 	ignored      = 'ﯰ', -- 
 	unstaged     = '',
@@ -63,6 +70,10 @@ end
 function M.lsp_attached()
 	-- return next(vim.lsp.buf_get_clients()) ~= nil
 	return next(vim.lsp.get_active_clients({ buffer = 0 })) ~= nil
+end
+
+function M.p(args)
+	print(vim.inspect(args))
 end
 
 return M
