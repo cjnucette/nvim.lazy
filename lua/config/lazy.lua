@@ -21,6 +21,9 @@ local opts = {
 	change_detection = {
 		notify = false
 	},
+	dev = {
+		path = '~/Workspace/code/nvim/cjnucette'
+	},
 	peformance = {
 		rtp = {
 			disabled_plugins = {

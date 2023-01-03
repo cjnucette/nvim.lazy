@@ -75,4 +75,9 @@ function M.p(args)
 	print(vim.inspect(args))
 end
 
+function M.reload(pkg)
+	package.loaded[pkg] = nil
+	require(pkg)
+end
+
 return M
