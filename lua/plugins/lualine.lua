@@ -135,7 +135,7 @@ function M.config()
 		if not has_space() then
 			return ''
 		end
-		return ' ' .. os.date('%H:%M')
+		return ' ' .. os.date('%I:%M %p')
 	end
 
 	-- local function search_count()
