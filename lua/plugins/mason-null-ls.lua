@@ -1,5 +1,6 @@
 local M = {
 	'jay-babu/mason-null-ls.nvim',
+	event = 'VimEnter',
 }
 
 

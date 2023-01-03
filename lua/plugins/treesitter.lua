@@ -3,7 +3,7 @@ local M = {
 	build = function()
 		pcall(require('nvim-treesitter.install').update { with_sync = true })
 	end,
-	event = 'BufReadPre',
+	event = 'VimEnter',
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter-textobjects',
 		'windwp/nvim-ts-autotag',
