@@ -19,8 +19,8 @@ vim.opt.laststatus = 3
 vim.opt.showmode = false
 
 vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 0 -- uses tabstop's value
+vim.opt.softtabstop = -1 -- uses shiftwidth's value
 vim.opt.expandtab = false
 vim.opt.shiftround = true
 vim.opt.smartindent = true
