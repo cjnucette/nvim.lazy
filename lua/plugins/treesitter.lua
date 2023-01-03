@@ -21,8 +21,9 @@ function M.config()
 
 		highlight = { enable = true },
 		indent = {
-			enable = false,
-			disable = { 'html', 'typescriptreact', 'javascriptreact', 'jsx', 'tsx' }
+			enable = true,
+			-- disable = { 'html', 'jsx', 'tsx', 'javascriptreact', 'typescriptreact' }
+			disable = { 'html' }
 		},
 		context_commentstring = {
 			enable = true
