@@ -3,7 +3,10 @@ local M = {}
 
 M.map = function(mode, lhs, rhs, opts)
 	opts = opts or {}
-	local isPlug = string.find(rhs, '<Plug>')
+	local isPlug = false
+	if type(rhs) == 'string' then
+		isPlug = not not string.find(rhs, '<Plug>')
+	end
 
 	opts.silent = opts.silent or true
 
@@ -12,10 +15,6 @@ M.map = function(mode, lhs, rhs, opts)
 	else
 		opts.noremap = opts.noremap or true
 	end
-	-- local options = { noremap = true, silent = true }
-	-- if opts then
-	--   options = vim.tbl_extend('force', options, opts)
-	-- end
 	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
