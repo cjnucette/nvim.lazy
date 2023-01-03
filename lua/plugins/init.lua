@@ -7,7 +7,7 @@ return {
 	{ 'catppuccin/nvim', name = 'catppuccin' },
 	{ 'windwp/nvim-autopairs', config = { check_ts = true }, event = 'BufReadPre' },
 	{ 'lewis6991/gitsigns.nvim', config = true, event = 'BufReadPre' },
-	{ 'ethanholz/nvim-lastplace', config = true, event = 'BufReadPre' },
+	-- { 'ethanholz/nvim-lastplace', config = true, event = 'BufReadPre' },
 	{ 'kylechui/nvim-surround', version = '*', config = true, event = 'InsertEnter' },
 	{ 'lvimuser/lsp-inlayhints.nvim', config = {
 		inlay_hints = {

@@ -23,6 +23,18 @@ autocmd(
 	}
 )
 
+autocmd('BufReadPost', {
+	desc = 'Place the cursor on the last place you where in a file',
+	callback = function()
+		local mark = vim.api.nvim_buf_get_mark(0, '"')
+		local lcount = vim.api.nvim_buf_line_count(0)
+		if mark[1] > 0 and mark[1] <= lcount then
+			pcall(vim.api.nvim_win_set_cursor, 0, mark)
+		end
+	end,
+	group = user_cmds
+})
+
 -- autocmd('BufWritePre', {
 --  desc = "Create directory when needed, when saving a file"
 -- 	group = user_cmds,
