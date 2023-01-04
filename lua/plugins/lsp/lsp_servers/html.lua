@@ -11,10 +11,10 @@ opts.settings = {
 		autoCreateQuotes = true,
 		format = {
 			enable = true,
-			-- indentInnerHtml = true,
-			-- templating = true,
-			-- wrapLineLength = 120,
-			-- wrapAttributes = 'auto',
+			indentInnerHtml = true,
+			templating = true,
+			wrapLineLength = 120,
+			wrapAttributes = 'auto',
 		},
 		hover = {
 			documentation = true,

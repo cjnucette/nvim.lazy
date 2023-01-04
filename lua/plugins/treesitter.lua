@@ -3,7 +3,7 @@ local M = {
 	build = function()
 		pcall(require('nvim-treesitter.install').update { with_sync = true })
 	end,
-	event = 'VimEnter',
+	lazy = false,
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter-textobjects',
 		'windwp/nvim-ts-autotag',
@@ -12,25 +12,17 @@ local M = {
 }
 
 function M.config()
-	-- [[ Configure Treesitter ]]
-	-- See `:help nvim-treesitter`
 	require('nvim-treesitter.configs').setup {
 		-- Add languages to be installed here that you want installed for treesitter
 		ensure_installed = { 'lua', 'rust', 'javascript', 'typescript', 'tsx', 'help', 'bash',
 			'css', 'html', 'markdown', 'markdown_inline', 'regex', 'vim', 'http', 'svelte' },
 
 		highlight = { enable = true },
-		indent = {
-			enable = true,
-			-- disable = { 'html', 'jsx', 'tsx', 'javascriptreact', 'typescriptreact' }
-			disable = { 'html' }
-		},
+		indent = { enable = true, disable = { 'jsx', 'tsx' } },
 		context_commentstring = {
 			enable = true
 		},
-		autotag = {
-			enable = true
-		},
+		autotag = { enable = true },
 		incremental_selection = {
 			enable = true,
 			keymaps = {
