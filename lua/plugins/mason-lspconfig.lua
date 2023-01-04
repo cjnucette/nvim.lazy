@@ -9,7 +9,7 @@ local M = {
 
 function M.config()
 	local servers = { 'sumneko_lua', 'vimls', 'tsserver', 'html', 'cssls', 'jsonls', 'bashls', 'ltex', 'denols',
-		'rust_analyzer', 'eslint' }
+		'rust_analyzer', 'eslint', 'svelte' }
 	require('mason-lspconfig').setup({
 		ensure_installed = servers
 	})
