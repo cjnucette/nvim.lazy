@@ -1,7 +1,7 @@
 local opts = {}
 
 opts = {
-	filetypes = { 'html', 'css', 'scss' }
+	filetypes = { 'css', 'scss' }
 }
 
 return opts
