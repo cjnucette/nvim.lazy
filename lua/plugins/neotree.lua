@@ -4,7 +4,7 @@ local M = {
 	cmd = 'NeoTreeReveal',
 	dependencies = {
 		'nvim-lua/plenary.nvim',
-		--  'nvim-tree/nvim-web-devicons',
+		 'nvim-tree/nvim-web-devicons',
 		'MunifTanjim/nui.nvim'
 	}
 }

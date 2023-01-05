@@ -3,7 +3,7 @@ local M = {
 	event = 'VimEnter',
 
 	dependencies = {
-		'kyazdani42/nvim-web-devicons',
+		'nvim-tree/nvim-web-devicons',
 		'SmiteshP/nvim-navic',
 		'WhoIsSethDaniel/lualine-lsp-progress',
 		{ 'vuki656/package-info.nvim' }
