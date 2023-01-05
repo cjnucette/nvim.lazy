@@ -3,7 +3,7 @@ return {
 	'bluz71/vim-nightfly-colors',
 	'folke/neodev.nvim',
 	'b0o/schemastore.nvim',
-	{ 'rafcamlet/nvim-luapad', cmd = { 'LuaPad', 'LuaRun' } },
+	{ 'rafcamlet/nvim-luapad', cmd = { 'Luapad', 'LuaRun' } },
 	{ 'tpope/vim-fugitive', cmd = 'G' },
 	{ 'catppuccin/nvim', name = 'catppuccin' },
 	{ 'windwp/nvim-autopairs', config = { check_ts = true }, event = 'BufReadPre' },
