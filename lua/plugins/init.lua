@@ -1,7 +1,6 @@
 return {
 	{ 'folke/tokyonight.nvim', lazy = false, priority = 1000 },
 	'bluz71/vim-nightfly-colors',
-	'folke/neodev.nvim',
 	'b0o/schemastore.nvim',
 	{ 'rafcamlet/nvim-luapad', cmd = { 'Luapad', 'LuaRun' } },
 	{ 'tpope/vim-fugitive', cmd = 'G' },
