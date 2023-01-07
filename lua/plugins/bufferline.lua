@@ -1,7 +1,10 @@
 local M = {
 	'akinsho/nvim-bufferline.lua',
 	version = '3.x',
-	event = 'VimEnter'
+	event = 'VimEnter',
+	dependencies = {
+		'nvim-tree/nvim-web-devicons',
+	},
 }
 
 function M.config()

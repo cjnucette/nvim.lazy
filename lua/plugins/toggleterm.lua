@@ -52,6 +52,7 @@ function M.init()
 	local Terminal = require('toggleterm.terminal').Terminal
 	local node = Terminal:new({ cmd = 'node', hidden = true })
 	local deno = Terminal:new({ cmd = 'deno', hidden = true })
+	local lazygit = Terminal:new({ cmd = 'lazygit', direction = 'float', hidden = true })
 
 	local function nodeToggle()
 		node:toggle()
@@ -61,8 +62,13 @@ function M.init()
 		deno:toggle()
 	end
 
+	local function lazygitToggle()
+		lazygit:toggle()
+	end
+
 	map('n', '<A-n>', nodeToggle, { desc = 'Toggleterm: Open node REPL' })
 	map('n', '<A-d>', denoToggle, { desc = 'Toggleterm: Open deno REPL' })
+	map('n', '<A-l>', lazygitToggle, { desc = 'Toggleterm: Open lazygit' })
 end
 
 return M

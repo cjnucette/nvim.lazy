@@ -14,8 +14,5 @@ vim.api.nvim_create_autocmd('User', {
 
 require('config.colorscheme')
 
--- local reload = require('utils').reload
--- require('utils').map('n', '<leader>rp', function() reload('todo') end)
-
 -- get bash aliases
 vim.env.BASH_ENV = './.vim_bash_env'

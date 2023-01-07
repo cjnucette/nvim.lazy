@@ -17,6 +17,6 @@ return {
 			only_current_line = true
 		}
 	} },
-	-- mine
-	-- { 'cjnucette/todo.nvim', cmd = 'Todo', dev = true }
+	-- dev
+	-- { 'cjnucette/scripts.nvim', cmd = 'Scripts', dev = true }
 }
