@@ -8,6 +8,7 @@ vim.opt.mouse = 'a'
 vim.opt.modeline = true
 vim.opt.updatetime = 250
 vim.opt.autoread = true
+vim.opt.exrc = true
 vim.cmd([[set shortmess+=c]])
 
 vim.opt.number = true
