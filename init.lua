@@ -1,6 +1,6 @@
 require('config.options')
 
--- plugin manager
+-- 💤  plugin manager
 require('config.lazy')
 
 vim.api.nvim_create_autocmd('User', {
