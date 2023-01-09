@@ -17,6 +17,7 @@ return {
 			only_current_line = true
 		}
 	} },
+	{ 'stevearc/oil.nvim', config = true, cmd = 'Oil' },
 	-- dev
 	-- { 'cjnucette/scripts.nvim', cmd = 'Scripts', dev = true }
 }
