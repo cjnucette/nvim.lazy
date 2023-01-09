@@ -5,7 +5,7 @@ func! local#zettel#edit(...)
   endif
   " build the file name
   " let l:fname = expand('~/notes/') . strftime("%F-%H%M") . l:sep . join(a:000, '-') . '.md'
-  let l:fname = expand('~/notes/') . join(a:000, '-')
+  let l:fname = expand('~/notes/') . tolower(join(a:000, '-'))
 
   if fnamemodify(l:fname, ":e") == "md" && filereadable(l:fname)
     exec "e " . l:fname
