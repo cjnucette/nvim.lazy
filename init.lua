@@ -1,8 +1,10 @@
+-- load options here, so options are correctly applied
 require('config.options')
 
 -- 💤  plugin manager
 require('config.lazy')
 
+-- mappings and autocmds can wait
 vim.api.nvim_create_autocmd('User', {
 	pattern = 'VeryLazy',
 	callback = function()
