@@ -7,7 +7,7 @@ autocmd(
 	{
 		desc = 'Use q to close the window',
 		group = user_cmds,
-		pattern = { 'help', 'man', 'fugitive' },
+		pattern = { 'help', 'man', 'fugitive', 'qf', 'notify', 'lspinfo' },
 		command = 'nnoremap <buffer> q :quit<cr>'
 	}
 )
@@ -32,6 +32,12 @@ autocmd('BufReadPost', {
 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
 		end
 	end,
+	group = user_cmds
+})
+
+autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
+	desc = 'Check for external changes to file and reload it',
+	command = 'checktime',
 	group = user_cmds
 })
 
