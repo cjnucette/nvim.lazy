@@ -9,6 +9,7 @@ local M = {
 			'jose-elias-alvarez/typescript.nvim',
 			'simrat39/rust-tools.nvim',
 			'lvimuser/lsp-inlayhints.nvim',
+			'marilari88/twoslash-queries.nvim'
 		},
 		config = function()
 			-- lspinfo window border
@@ -58,10 +59,13 @@ local M = {
 					opts = vim.tbl_extend('force', opts, custom_opts)
 
 					opts.on_attach = function(client, bufnr)
+						on_attach(client, bufnr)
 						if custom_opts.on_attach then
 							custom_opts.on_attach(client, bufnr)
 						end
-						on_attach(client, bufnr)
+						if lsp == 'tsserver' then
+							require('twoslash-queries').attach(client, bufnr)
+						end
 					end
 				end
 
