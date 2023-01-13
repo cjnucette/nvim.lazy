@@ -138,6 +138,13 @@ local M = {
 		config = {
 			ensure_installed = { 'prettier', 'shfmt', 'shellcheck' }
 		}
+	},
+	{
+		'marilari88/twoslash-queries.nvim',
+		config = function()
+			require('twoslash-queries').setup({})
+			vim.api.nvim_set_hl(0, 'TypeVirtualText', { link = 'Comment' })
+		end
 	}
 }
 
