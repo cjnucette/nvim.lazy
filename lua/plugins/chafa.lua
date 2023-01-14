@@ -7,7 +7,7 @@ local M = {
 	}
 }
 
-M.config = {
+M.opts = {
 	render = {
 		min_padding = 5,
 		show_label = true,

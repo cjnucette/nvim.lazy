@@ -109,14 +109,14 @@ local M = {
 		'williamboman/mason.nvim',
 		cmd = 'Mason',
 		keys = { { '<leader>lm', '<cmd>Mason<cr>', 'Mason dashboard' } },
-		config = {
+		opts = {
 			ui = { border = 'rounded' },
 			install_root_dir = vim.fn.stdpath('config') .. '/mason'
 		}
 	},
 	{
 		'williamboman/mason-lspconfig.nvim',
-		config = {
+		opts = {
 			ensure_installed = {
 				'sumneko_lua',
 				'vimls',
@@ -135,7 +135,7 @@ local M = {
 	},
 	{
 		'jay-babu/mason-null-ls.nvim',
-		config = {
+		opts = {
 			ensure_installed = { 'prettier', 'shfmt', 'shellcheck' }
 		}
 	},
