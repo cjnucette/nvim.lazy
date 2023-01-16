@@ -278,6 +278,22 @@ function M.config()
 			},
 			lualine_z = { clock }
 		},
+		inactive_winbar = {
+			lualine_a = {
+				{
+					'filetype',
+					icon_only = true
+				},
+				{ 'filename',
+					padding = 0,
+					file_status = false,
+					path = 1,
+					symbols = {
+						unnamed = ''
+					}
+				},
+			},
+		},
 		extensions = { neo_tree, toggleterm, package_manager, telescope, mason, checkhealth }
 	})
 end
