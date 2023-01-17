@@ -1,5 +1,7 @@
 -- load options here, so options are correctly applied
 require('config.options')
+-- Some autocmds don't work if loaded in the autocmd below
+require('config.autocmds')
 
 -- 💤  plugin manager
 require('config.lazy')
@@ -9,7 +11,6 @@ vim.api.nvim_create_autocmd('User', {
 	pattern = 'VeryLazy',
 	callback = function()
 		require('config.mappings')
-		require('config.autocmds')
 	end
 })
 

@@ -25,6 +25,7 @@ autocmd(
 
 autocmd('BufReadPost', {
 	desc = 'Place the cursor on the last place you where in a file',
+	group = user_cmds,
 	callback = function()
 		local mark = vim.api.nvim_buf_get_mark(0, '"')
 		local lcount = vim.api.nvim_buf_line_count(0)
@@ -32,13 +33,12 @@ autocmd('BufReadPost', {
 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
 		end
 	end,
-	group = user_cmds
 })
 
 autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
 	desc = 'Check for external changes to file and reload it',
+	group = user_cmds,
 	command = 'checktime',
-	group = user_cmds
 })
 
 -- autocmd('BufWritePre', {
@@ -54,16 +54,10 @@ autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
 -- 	end
 -- })
 
-autocmd('BufNewFile', {
-	desc = 'Load template when a new empty html file is created.',
-	group = user_cmds,
-	pattern = '*.html',
-	command = [[:0r ~/.config/nvim/templates/skeleton.html]]
-})
-
-autocmd('BufNewFile', {
-	desc = 'Load template when a new empty shell script is created.',
-	group = user_cmds,
-	pattern = '*.sh',
-	command = [[:0r ~/.config/nvim/templates/skeleton.sh]]
+vim.api.nvim_create_autocmd('BufNewFile', {
+	desc = 'Load skeleton file when a new empty file is created.',
+	group = vim.api.nvim_create_augroup('init-lua', { clear = true }),
+	callback = function()
+		vim.cmd.read({ args = { vim.fn.stdpath('config') .. '/templates/skeleton.' .. vim.fn.expand('<afile>:e')}, range = {0, 0}})
+	end,
 })
