@@ -24,5 +24,5 @@ return {
 		event = 'BufReadPre'
 	},
 	-- dev
-	{ 'cjnucette/scripts.nvim', cmd = 'Scripts', dev = true }
+	-- { 'cjnucette/scripts.nvim', cmd = 'Scripts', dev = true }
 }
