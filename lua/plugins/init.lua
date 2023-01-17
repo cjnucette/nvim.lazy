@@ -1,7 +1,22 @@
 return {
+	{
+		'folke/tokyonight.nvim',
+		lazy = false,
+		priority = 1000,
+		config = function()
+			local opts = {}
+			if vim.fn.hostname() == 'alpha' then
+				opts.style = 'moon'
+			else
+				opts.style = 'night'
+			end
+
+			require('tokyonight').setup(opts)
+			vim.cmd.colorscheme('tokyonight')
+		end
+	},
 	'bluz71/vim-nightfly-colors',
 	'b0o/schemastore.nvim',
-	{ 'folke/tokyonight.nvim', lazy = false, priority = 1000 },
 	{ 'rafcamlet/nvim-luapad', cmd = { 'Luapad', 'LuaRun' } },
 	{ 'tpope/vim-fugitive', cmd = 'G' },
 	{ 'catppuccin/nvim', name = 'catppuccin' },

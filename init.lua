@@ -13,8 +13,5 @@ vim.api.nvim_create_autocmd('User', {
 	end
 })
 
-
-require('config.colorscheme')
-
 -- get bash aliases
 vim.env.BASH_ENV = './.vim_bash_env'
