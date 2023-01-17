@@ -1,0 +1,111 @@
+:root {
+  /* Using Roboto font as reference, adjust when using other fonts */
+  --fs-900: 4.209rem;
+  --fs-800: 3.157rem;
+  --fs-700: 2.369rem;
+  --fs-600: 1.777rem;
+  --fs-500: 1.333rem;
+  --fs-400: 1rem; /* Base */
+  --fs-300: 0.75rem;
+  --fs-200: 0.563rem;
+  --fs-100: 0.422rem;
+
+  --fw-900: 900;
+  --fw-700: 700;
+  --fw-500: 500;
+  --fw-400: 400; /* Base */
+  --fw-300: 300;
+  --fw-100: 100;
+
+  /* adjust colors as needed */
+  --clr-accent: hsl(245, 45%, 50%); /* 10% call for accion */
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-400: hsl(220, 53%, 97%); /* Base, 60%  background and stuff */
+  --clr-neutral-500: hsl(197, 16%, 92%);
+  --clr-neutral-900: hsl(0, 0%, 0%);
+  --clr-primary: hsl(245, 66%, 41%); /* 30%  main color, brand color */
+}
+
+/* CSS */
+/* set global fonts and color to take advantage of the cascade and inheritance */
+h4 {
+  font-size: var(--fs-600);
+}
+h3 {
+  font-size: var(--fs-700);
+}
+h2 {
+  font-size: var(--fs-800);
+}
+h1 {
+  font-size: var(--fs-900);
+}
+
+/* Composition Layer
+ *
+ * This should provide a skeletal layout structure
+ * that shouldn't interfere with the component (block)
+ * It should:
+ * Provide high-level, flexible layouts
+ * Determine how element interact with each other
+ * Create consistent flow a rythm
+ */
+
+[class*="grid-"] {
+  display: grid;
+  gap: 1rem;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-spacer, 1rem);
+}
+
+/* Utilities
+ *
+ * A utility is a class that does one job and does that one job well.
+ * This class --most often than not--will have only one property defined.
+ * But it might also have a few CSS properties defined, in a consise group.
+ * It should extend design tokens.
+ * It should abstract repeatability away from the CSS and apply it in the HTML instead.
+ * */
+
+.container {
+  width: min(100% - var(--padding, 2rem), var(--max-width, 60ch));
+  margin-inline: auto;
+}
+
+.fluid-font {
+  font-size: clamp(var(--fs-700, 2rem), 4vw + 1rem, var(--fs-800, 3rem));
+}
+
+[class*="box-shadow"] {
+  --box-shadow: var(--vo, 0) var(--ho, 0) var(--blur, 0.5rem) var(--spread, 0)
+    rgb(var(--color, 0 0 0) / var(--opacity, 0.15));
+}
+
+/* Block
+ * It is a skeletal component or organizational structure.
+ * It is a card element or a button element for example.
+ * At this point most of the work have already been done by the
+ * global CSS, composition and utility layers.
+ * It is safe because of the parent block class (.my-block) wich adds
+ * one extra specificity point for you.
+ * examples: .my-block .image {} or .my-block img {}
+ * There could be a block-level composition layer
+ *
+ * It should:
+ * - Extend the work already done by the global CSS, composition and utility layers
+ * - Apply a collection of design tokens within a concise group
+ * - Create a namespace or specifity boost to control a specific context
+ */
+
+/* Exception 
+ *
+ * An exception is a deviation from the rules outlined in a block--state change.
+ * We add an exception using a data attribute: data-state="reversed" to the element.
+ * Then we target it in css like so .card[data-state="reversed"]
+ * It should:
+ * - Provide a concise variation to a block
+ * - Use data attributes
+ *
+ * */

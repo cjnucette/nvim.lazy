@@ -1,0 +1,111 @@
+/*
+  Inspired by Josh Comeau's CSS Reset and Andy Bell's modern CSS reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+  https://piccalil.li/blog/a-modern-css-reset/
+*/
+
+/* This can also be set in html like so (recommended)*/
+/* <meta name="color-scheme" content="dark light" /> */
+:root {
+  color-scheme: dark light;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--fs-400);
+}
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@supports (font-size-adjust: 1) {
+  body {
+    font-size-adjust: 0.5;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+}
+
+body,
+p,
+li,
+dt,
+dl,
+dd,
+blockquote,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit;
+}
+
+:where(ul[class], ol[class], ul[role="list"], ol[role="list"]) {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Create a root stacking context */
+/* This needs to be adjusted to meet the js framework being used. */
+#app,
+#root,
+#__next {
+  isolation: isolate;
+}

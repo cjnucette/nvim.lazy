@@ -1,0 +1,16 @@
+{
+  "name": "change_this",
+  "version": "0.0.1",
+  "description": "add this",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html --open",
+    "build": "parcel build src/index.html",
+    "test": "jest",
+    "test:w": "jest --watchAll"
+  },
+  "keywords": [],
+  "author": "Carlos J. Nucette <cjnucette@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {}
+}
