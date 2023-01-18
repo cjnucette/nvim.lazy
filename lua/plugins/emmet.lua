@@ -9,7 +9,7 @@ function M.init()
 
 	vim.api.nvim_create_autocmd('FileType', {
 		group = vim.api.nvim_create_augroup('user_emmet', { clear = true }),
-		pattern = { 'html', 'css', 'scss', 'javascriptreact', 'jsx', 'typescriptreact', 'tsx', 'svelte' },
+		pattern = { 'html', 'css', 'scss', 'javascriptreact', 'jsx', 'typescriptreact', 'tsx' },
 		command = 'EmmetInstall'
 	})
 end
