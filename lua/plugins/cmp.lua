@@ -11,6 +11,7 @@ local M = {
 		'hrsh7th/vim-vsnip',
 		'hrsh7th/vim-vsnip-integ',
 		{ 'dsznajder/vscode-es7-javascript-react-snippets', build = 'yarn install --frozen-lockfile && yarn compile' },
+		{ 'fivethree-team/vscode-svelte-snippets' },
 		'onsails/lspkind.nvim'
 	},
 	event = 'InsertEnter'
