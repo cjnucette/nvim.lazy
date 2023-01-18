@@ -58,6 +58,9 @@ vim.api.nvim_create_autocmd('BufNewFile', {
 	desc = 'Load skeleton file when a new empty file is created.',
 	group = vim.api.nvim_create_augroup('init-lua', { clear = true }),
 	callback = function()
-		vim.cmd.read({ args = { vim.fn.stdpath('config') .. '/templates/skeleton.' .. vim.fn.expand('<afile>:e')}, range = {0, 0}})
+		local skeleton_name = vim.fn.stdpath('config') .. '/templates/skeleton.' .. vim.fn.expand('<afile>:e')
+		if vim.loop.fs_stat(skeleton_name) then
+			vim.cmd.read({ args = { skeleton_name }, range = { 0, 0 } })
+		end
 	end,
 })
