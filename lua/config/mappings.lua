@@ -10,7 +10,8 @@ map('n', '<tab>', vim.cmd.bp, { desc = 'Goto the prev buffer' })
 
 map('n', '<space><space>', 'za', { desc = 'Unfold all' })
 
-map('n', '<leader>u', 'mzviw~`z', { desc = 'Toggle capitalization of word under the cursor' })
+-- map('n', '<leader>u', 'mzviw~`z', { desc = 'Toggle capitalization of word under the cursor' })
+map('n', '<leader>u', 'gUbel', { desc = 'Toggle capitalization of word under the cursor' })
 
 map('v', '<', '<gv', { desc = 'Un-indent current selection and keep the selection' })
 map('v', '>', '>gv', { desc = 'Indent current selection and keep the selection' })
