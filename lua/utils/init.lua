@@ -8,12 +8,12 @@ M.map = function(mode, lhs, rhs, opts)
 		isPlug = not not string.find(rhs, '<Plug>')
 	end
 
-	opts.silent = opts.silent or true
+	opts.silent = opts.silent == nil and true
 
 	if isPlug then
 		opts.noremap = false
 	else
-		opts.noremap = opts.noremap or true
+		opts.noremap = opts.noremap == nil and true
 	end
 	vim.keymap.set(mode, lhs, rhs, opts)
 end
