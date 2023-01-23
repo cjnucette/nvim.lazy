@@ -1,4 +1,6 @@
-local root = vim.fn.fnamemodify('./.repro', ':p')
+require('config/options')
+
+local root = vim.fn.fnamemodify('~/.config/nvim/.repro', ':p')
 
 -- set stdpaths to use .repro
 for _, name in ipairs({ 'config', 'data', 'state', 'cache' }) do
@@ -6,7 +8,7 @@ for _, name in ipairs({ 'config', 'data', 'state', 'cache' }) do
 end
 
 -- bootstrap lazy
-local lazypath = root .. '/plugins/lazy.nvim'
+local lazypath = root .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		'git',
@@ -38,7 +40,7 @@ local plugins = {
 	}
 }
 require('lazy').setup(plugins, {
-	root = root .. '/plugins',
+	root = root .. '/lazy',
 })
 
 -- add anything else here
