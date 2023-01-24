@@ -14,6 +14,9 @@ vim.cmd([[set shortmess+=c]])
 vim.opt.number = true
 vim.opt.signcolumn = 'number'
 
+vim.opt.background = 'dark'
+vim.opt.termguicolors = true
+
 --statusline
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
