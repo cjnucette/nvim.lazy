@@ -41,12 +41,6 @@ return {
 			only_current_line = true
 		}
 	} },
-	{ 'lewis6991/gitsigns.nvim', opts = {
-		numhl = true,
-		signcolumn = false
-	},
-		event = 'BufReadPre'
-	},
 	-- dev
-	-- { 'cjnucette/scripts.nvim', cmd = 'Scripts', dev = true }
+	{ 'cjnucette/scripts.nvim', dev = true }
 }
