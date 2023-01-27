@@ -1,16 +1,26 @@
 return {
 	{
+		'catppuccin/nvim',
+		name = 'catppuccin',
+		lazy = false,
+		priority = 1000,
+		cond = vim.fn.hostname() == 'beta',
+		config = function()
+			-- require('catppuccin').setup({
+			-- 	flavour = 'mocha' -- latte, frappe, macchiato, mocha
+			-- })
+			vim.cmd.colorscheme('catppuccin')
+		end
+	},
+	{
 		'folke/tokyonight.nvim',
 		lazy = false,
 		priority = 1000,
+		cond = vim.fn.hostname() == 'alpha',
 		config = function()
-			local opts = {}
-			if vim.fn.hostname() == 'alpha' then
-				opts.style = 'moon'
-			else
-				opts.style = 'night'
-			end
-
+			local opts = {
+				style = 'moon'
+			}
 			require('tokyonight').setup(opts)
 			vim.cmd.colorscheme('tokyonight')
 		end
@@ -19,7 +29,6 @@ return {
 	'b0o/schemastore.nvim',
 	{ 'rafcamlet/nvim-luapad', cmd = { 'Luapad', 'LuaRun' } },
 	{ 'tpope/vim-fugitive', cmd = 'G' },
-	{ 'catppuccin/nvim', name = 'catppuccin' },
 	{ 'windwp/nvim-autopairs', opts = { check_ts = true }, event = 'BufReadPre' },
 	-- { 'ethanholz/nvim-lastplace', config = true, event = 'BufReadPre' },
 	{ 'kylechui/nvim-surround', version = '*', config = true, event = 'InsertEnter' },
