@@ -102,7 +102,6 @@ function M.config()
 					cmp.complete()
 					-- cmp.select_next_item()
 				else
-					vim.fn['codeium#Accept']()
 					fallback()
 				end
 			end, {
