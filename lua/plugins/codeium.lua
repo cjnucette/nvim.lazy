@@ -3,6 +3,7 @@ local map = require('utils').map
 return {
 	'Exafunction/codeium.vim',
 	lazy = false,
+	enabled = false,
 	config = function()
 		-- vim.g.codeium_disable_bindings = true
 		-- map('i', '<C-p>', '<Plug>(codeium-next)', { desc = 'Codeium: Next completion' })
