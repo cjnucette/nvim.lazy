@@ -253,7 +253,7 @@ function M.config()
 			lualine_x = {
 				{
 					'lsp_progress',
-					display_components = { 'lsp_client_name', 'spinner', { 'percentage' } }
+					display_components = { 'lsp_client_name', { 'percentage' } }
 				},
 				my_location
 			},
