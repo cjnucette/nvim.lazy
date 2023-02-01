@@ -46,6 +46,7 @@ vim.opt.hlsearch = false
 
 vim.opt.list = true
 vim.opt.listchars = { tab = '> ', trail = '·' }
+vim.opt.fillchars = { eob = ' ' } -- removes those pesky ~ at the end of the file
 
 vim.opt.clipboard:append({ 'unnamed', 'unnamedplus' })
 
