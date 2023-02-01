@@ -60,13 +60,6 @@ if vim.fn.exists('+winblend') then -- feature detection ;)
 	vim.opt.winblend = 10
 end
 
--- folding
-vim.opt.foldenable = true
-vim.cmd([[ set foldtext=getline(v:foldstart).'...'.trim(getline(v:foldend)) ]])
-vim.opt.foldnestmax = 3
-vim.opt.foldminlines = 1
-vim.opt.fillchars = { fold = ' ', eob = ' ', foldclose = '›', foldopen = '‹' }
-
 --- undo ---
 if vim.fn.has('persistent_undo') then
 	vim.opt.undodir = vim.fn.expand('~/.undodir') -- ~ doesn't expand in lua
