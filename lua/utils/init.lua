@@ -1,4 +1,3 @@
-local fn = vim.fn
 local M = {}
 
 M.map = function(mode, lhs, rhs, opts)
@@ -45,16 +44,22 @@ M.capitalize = function(str)
 	return (str:gsub('^%l', string.upper))
 end
 
-M.get_color = function(group, attr)
-	attr = attr or 'bg#'
-	--  local tgc = vim.opt.termguicolors:get()
-	--  local hl = vim.api.nvim_get_hl_by_name(hlgroup, tgc)
-	-- if tgc then
-	--    return  { fg = hl.foreground, bg = hl.background, sp = hl.special }
-	--  else
-	--    return  { ctermfg = hl.foreground, ctermbg = hl.background }
-	--  end
-	return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
+--- get_color returns a table with foreground, background, and special of a color group
+---@param group string Color group name
+---@return table | nil
+M.get_color = function(group)
+	local hl = vim.api.nvim_get_hl_by_name(group, true)
+	if not hl then
+		return nil
+	end
+
+	local fg = hl.foreground and string.format('#%06x', hl.foreground)
+	local bg = hl.background and string.format('#%06x', hl.background)
+	-- how to return the rest of the information bold, italic, etc.
+	-- local sp = hl.special and hl.special
+
+	return { fg = fg, bg = bg }
+	-- return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
 end
 
 
