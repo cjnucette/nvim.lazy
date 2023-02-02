@@ -6,7 +6,7 @@ map('n', '<leader>w', vim.cmd.w, { desc = 'Write buffer to disk' })
 map('n', '<leader>ev', function() vim.cmd.edit('$MYVIMRC') end, { desc = 'Edit init.lua' })
 
 map('n', '<tab>', vim.cmd.bn, { desc = 'Goto the next buffer' })
-map('n', '<tab>', vim.cmd.bp, { desc = 'Goto the prev buffer' })
+map('n', '<s-tab>', vim.cmd.bp, { desc = 'Goto the prev buffer' })
 
 -- map('n', '<leader>u', 'mzviw~`z', { desc = 'Toggle capitalization of word under the cursor' })
 map('n', '<leader>u', 'gUbel', { desc = 'Toggle capitalization of word under the cursor' })
