@@ -1,12 +1,14 @@
 local M = {
 	'lukas-reineke/indent-blankline.nvim',
-	event = 'BufReadPre',
+	event = 'BufReadPost',
 }
 
 function M.config()
-	require('indent_blankline').setup()
-	-- show_current_context = true,
-	-- show_current_context_start = true,
+	require('indent_blankline').setup({
+		filetype_exclude = { 'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason' },
+		show_current_context = false,
+		show_current_context_start = false,
+	})
 end
 
 return M
