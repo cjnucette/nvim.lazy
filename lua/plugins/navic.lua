@@ -1,13 +1,8 @@
-local M = {
-	'SmiteshP/nvim-navic'
+return {
+	'SmiteshP/nvim-navic',
+	opts = {
+		highlight = true,
+		separator = ' 〉',
+		depth_limit = 5
+	}
 }
-
-function M.config()
-	require('nvim-navic').setup({
-	highlight = true,
-	separator = ' 〉',
-	depth_limit = 5
-	})
-end
-
-return M
