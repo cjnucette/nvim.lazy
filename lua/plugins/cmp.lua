@@ -101,7 +101,6 @@ local M = {
 							feedkey('<Plug>(vsnip-expand-or-jump)', '')
 						elseif has_words_before() then
 							cmp.complete()
-							-- cmp.select_next_item()
 						else
 							fallback()
 						end
