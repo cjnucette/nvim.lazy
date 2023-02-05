@@ -11,13 +11,13 @@ end
 function M.init()
 	local map = require('utils').map
 
-	map({ 'n' }, '<LEADER>ns', require('package-info').show, { desc = 'Package-info: Show dependecy versions' })
-	map({ 'n' }, '<LEADER>nh', require('package-info').hide, { desc = 'Package-info: Hide dependency versions' })
-	map({ 'n' }, '<LEADER>nt', require('package-info').toggle, { desc = 'Package-info: Toggle dependency versions' })
-	map({ 'n' }, '<LEADER>nu', require('package-info').update, { desc = 'Package-info: Update dependency on the line' })
-	map({ 'n' }, '<LEADER>nd', require('package-info').delete, { desc = 'Package-info: Delete dependency on the line' })
-	map({ 'n' }, '<LEADER>ni', require('package-info').install, { desc = 'Package-info: Install a new dependency' })
-	map({ 'n' }, '<LEADER>np', require('package-info').change_version,
+	map({ 'n' }, '<LEADER>ps', require('package-info').show, { desc = 'Package-info: Show dependecy versions' })
+	map({ 'n' }, '<LEADER>ph', require('package-info').hide, { desc = 'Package-info: Hide dependency versions' })
+	map({ 'n' }, '<LEADER>pt', require('package-info').toggle, { desc = 'Package-info: Toggle dependency versions' })
+	map({ 'n' }, '<LEADER>pu', require('package-info').update, { desc = 'Package-info: Update dependency on the line' })
+	map({ 'n' }, '<LEADER>pd', require('package-info').delete, { desc = 'Package-info: Delete dependency on the line' })
+	map({ 'n' }, '<LEADER>pi', require('package-info').install, { desc = 'Package-info: Install a new dependency' })
+	map({ 'n' }, '<LEADER>pp', require('package-info').change_version,
 	    { desc = 'Package-info: Install a different dependency version' })
 end
 
