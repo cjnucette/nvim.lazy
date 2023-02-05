@@ -4,7 +4,7 @@ return {
 		name = 'catppuccin',
 		lazy = false,
 		priority = 1000,
-		cond = vim.fn.hostname() == 'beta',
+		cond = vim.fn.hostname() ~= 'alpha',
 		config = function()
 			-- require('catppuccin').setup({
 			-- 	flavour = 'mocha' -- latte, frappe, macchiato, mocha
