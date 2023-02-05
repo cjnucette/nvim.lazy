@@ -138,17 +138,6 @@ function M.config()
 		return ' ' .. os.date('%I:%M %p')
 	end
 
-	-- local function search_count()
-	--   local search = vim.fn.searchcount({ maxcount = 0 })
-	--   local search_current = search.current
-	--   local search_total = search.total
-	--   if search_current > 0 then
-	--     return vim.fn.getreg('/') .. ':' .. search_current .. '/' .. search_total
-	--   else
-	--     return ''
-	--   end
-	-- end
-
 	-- extensions
 	local neo_tree = {
 		sections = {
@@ -233,23 +222,29 @@ function M.config()
 
 	lualine.setup({
 		options = {
-			global_status = true,
+			globalstatus = true,
 			component_separators = '',
 			section_separators = '',
-			-- color = 'Normal',
 			color = 'BufferLineTab',
-			theme = { normal = {} }
+			theme = { normal = {} },
+			disabled_filetypes = {
+				statusline = {},
+				winbar = {}
+			}
 		},
 		sections = {
 			lualine_a = { diagnostics },
 			lualine_b = { mode, branch, diff },
-			lualine_c = { {
-				on_click = function()
-					vim.cmd.Lazy('update')
-				end,
-				require('lazy.status').updates,
-				cond = require('lazy.status').has_updates
-			}, package_info },
+			lualine_c = {
+				{
+					on_click = function()
+						vim.cmd.Lazy('update')
+					end,
+					require('lazy.status').updates,
+					cond = require('lazy.status').has_updates
+				},
+				package_info
+			},
 			lualine_x = {
 				{
 					'lsp_progress',
