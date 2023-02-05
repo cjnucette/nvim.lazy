@@ -23,7 +23,7 @@ local M = {
 				require('plugins.lsp.autocmds').setup(client, bufnr)
 
 				-- navic
-				if client.server_capabilities.documentSymbolProvider and not client.name == 'astro' then
+				if client.server_capabilities.documentSymbolProvider or client.name ~= 'astro' then
 					if pcall(require, 'nvim-navic') then
 						require('nvim-navic').attach(client, bufnr)
 					end
