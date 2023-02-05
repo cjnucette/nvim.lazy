@@ -50,6 +50,7 @@ local M = {
 			end
 
 			local has_words_before = function()
+				local unpack = unpack or table.unpack
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 				return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 			end
@@ -88,7 +89,7 @@ local M = {
 				mapping = {
 					['<C-b>'] = cmp.mapping.scroll_docs(-4),
 					['<C-f>'] = cmp.mapping.scroll_docs(4),
-					['<c-space>'] = cmp.mapping.complete(),
+					['<c-space>'] = cmp.mapping:complete(),
 					-- ['<C-y>'] = cmp.config.disable,
 					['<C-e>'] = cmp.mapping.abort(),
 					['<CR>'] = cmp.mapping.confirm({ select = true, }),
@@ -108,11 +109,13 @@ local M = {
 						'i',
 						's',
 					}),
-					['<S-Tab>'] = cmp.mapping(function()
+					['<S-Tab>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
 						elseif vim.fn['vsnip#available'](-1) == 1 then
 							feedkey('<Plug>(vsnip-jump-prev)', '')
+						else
+							fallback()
 						end
 					end, {
 						'i',
