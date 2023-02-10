@@ -19,7 +19,7 @@ return {
 		cond = vim.fn.hostname() == 'alpha',
 		config = function()
 			local opts = {
-				style = 'moon'
+				style = 'night'
 			}
 			require('tokyonight').setup(opts)
 			vim.cmd.colorscheme('tokyonight')
