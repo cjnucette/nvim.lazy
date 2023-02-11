@@ -1,7 +1,6 @@
 local M = {
 	'nvim-lualine/lualine.nvim',
 	event = 'VimEnter',
-
 	dependencies = {
 		'nvim-tree/nvim-web-devicons',
 		'SmiteshP/nvim-navic',
@@ -103,7 +102,7 @@ function M.config()
 
 			if lsp_attached() then
 				local space = has_space() and ' ' or ''
-				output = output .. space .. ''
+				output = output .. space .. ''
 			end
 
 			return output
@@ -248,6 +247,11 @@ function M.config()
 			lualine_x = {
 				{
 					'lsp_progress',
+					separators = {
+						lsp_client_name = { pre = ' ', post = '' }
+					},
+					hide = { 'null-ls' },
+					only_show_attached = true,
 					display_components = { 'lsp_client_name', { 'percentage' } }
 				},
 				my_location
