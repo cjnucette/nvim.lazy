@@ -118,7 +118,7 @@ local M = {
 		'williamboman/mason-lspconfig.nvim',
 		opts = {
 			ensure_installed = {
-				'sumneko_lua',
+				'lua_ls',
 				'vimls',
 				'tsserver',
 				'html',
