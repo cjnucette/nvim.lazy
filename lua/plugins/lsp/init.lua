@@ -123,6 +123,7 @@ local M = {
 				'tsserver',
 				'html',
 				'cssls',
+				'emmet_ls',
 				'jsonls',
 				'bashls',
 				'ltex',
