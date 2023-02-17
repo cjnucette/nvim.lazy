@@ -2,3 +2,4 @@ lazy/
 mason/
 .repro/
 lazy-lock.json
+*.bak
