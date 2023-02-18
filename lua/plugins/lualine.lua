@@ -3,7 +3,6 @@ local M = {
 	event = 'VimEnter',
 	dependencies = {
 		'nvim-tree/nvim-web-devicons',
-		'SmiteshP/nvim-navic',
 		'WhoIsSethDaniel/lualine-lsp-progress',
 		{ 'vuki656/package-info.nvim' }
 	},
@@ -14,22 +13,9 @@ function M.config()
 	local signs = require('utils').signs
 	local capitalize = require('utils').capitalize
 	local lsp_attached = require('utils').lsp_attached
-	local is_empty = require('utils').is_empty
-	local navic = require('nvim-navic')
-
 
 	local function has_space()
 		return vim.o.columns >= 80
-	end
-
-	local function gps()
-		if navic.is_available() then
-			if not is_empty(navic.get_location()) then
-				return '〉' .. navic.get_location()
-			end
-		end
-
-		return ''
 	end
 
 	-- components
@@ -258,40 +244,6 @@ function M.config()
 			},
 			lualine_y = { spaces, encoding, fileformat },
 			lualine_z = { filetype }
-		},
-		winbar = {
-			lualine_a = {
-				{
-					'filetype',
-					icon_only = true
-				},
-				{ 'filename',
-					padding = 0,
-					file_status = false,
-					path = 1,
-					symbols = {
-						unnamed = ''
-					}
-				},
-				gps
-			},
-			lualine_z = { clock }
-		},
-		inactive_winbar = {
-			lualine_a = {
-				{
-					'filetype',
-					icon_only = true
-				},
-				{ 'filename',
-					padding = 0,
-					file_status = false,
-					path = 1,
-					symbols = {
-						unnamed = ''
-					}
-				},
-			},
 		},
 		extensions = { neo_tree, toggleterm, package_manager, telescope, mason, checkhealth }
 	})
