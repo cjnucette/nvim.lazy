@@ -1,7 +1,7 @@
 local M = {
 	{
 		'neovim/nvim-lspconfig',
-		event = {'BufReadPre', 'BufNewFile'},
+		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
 			{ 'folke/neodev.nvim', config = true },
 			'williamboman/mason.nvim',
@@ -22,13 +22,6 @@ local M = {
 				require('plugins.lsp.formatting').setup(client, bufnr)
 				require('plugins.lsp.autocmds').setup(client, bufnr)
 
-				-- navic
-				if client.server_capabilities.documentSymbolProvider then
-					if pcall(require, 'nvim-navic') then
-						require('nvim-navic').attach(client, bufnr)
-					end
-				end
-
 				-- inlayhints
 				if client.server_capabilities.inlayHintProvider then
 					require('lsp-inlayhints').on_attach(client, bufnr, true)
@@ -43,7 +36,7 @@ local M = {
 
 			local handlers = {
 				['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-				['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' }),
+				['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
 			}
 
 			local function get_server_options(lsp)
