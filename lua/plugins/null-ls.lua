@@ -1,6 +1,6 @@
 local M = {
 	'jose-elias-alvarez/null-ls.nvim',
-	event = 'BufReadPre',
+	event = { 'BufReadPre', 'BufNewFile' },
 	dependencies = {
 		'jose-elias-alvarez/typescript.nvim',
 	}
@@ -11,7 +11,7 @@ function M.config()
 
 	local prettier_conf = function()
 		local options = {
-			filetypes = { 'javascript', 'javascriptreact', 'jsx', 'typescript', 'typescriptreact', 'tsx', 'markdown' },
+			filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'markdown', 'markdown.mdx' },
 			extra_args = {
 				'--config-precedence',
 				'prefer-file',
