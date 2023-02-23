@@ -1,7 +1,7 @@
 local M = {
 	{
 		'neovim/nvim-lspconfig',
-		event = 'BufReadPre',
+		event = {'BufReadPre', 'BufNewFile'},
 		dependencies = {
 			{ 'folke/neodev.nvim', config = true },
 			'williamboman/mason.nvim',
@@ -49,14 +49,14 @@ local M = {
 			local function get_server_options(lsp)
 				local opts = {
 					on_attach = on_attach,
-					capabilities = capabilities,
+					capabilities = vim.deepcopy(capabilities),
 					handlers = handlers
 				}
 
 				if pcall(require, 'plugins/lsp/lsp_servers/' .. lsp) then
 					local custom_opts = require('plugins/lsp/lsp_servers/' .. lsp)
 
-					opts = vim.tbl_extend('force', opts, custom_opts)
+					opts = vim.tbl_deep_extend('force', opts, custom_opts)
 
 					opts.on_attach = function(client, bufnr)
 						on_attach(client, bufnr)
