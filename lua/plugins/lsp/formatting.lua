@@ -8,8 +8,7 @@ function M.setup(client, bufnr)
 
 		vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
 	end
-
-	if client.supports_method('textDocument/formatting') then
+	if client.supports_method('textDocument/formatting') or client.name == 'cssls' then
 		vim.api.nvim_buf_create_user_command(
 			bufnr,
 			'Format',
