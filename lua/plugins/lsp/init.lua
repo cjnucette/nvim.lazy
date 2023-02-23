@@ -18,41 +18,21 @@ local M = {
 
 			require('plugins.lsp.diagnostics').setup()
 
-
-			-- nvim-cmp supports additional completion capabilities
-			local capabilities = lsp_utils.capabilities()
-			local handlers = lsp_utils.handlers()
-
-			local function get_server_options(lsp)
-				local opts = {
-					on_attach = lsp_utils.on_attach(),
-					capabilities = vim.deepcopy(capabilities),
-					handlers = handlers
-				}
-
-				if pcall(require, 'plugins/lsp/lsp_servers/' .. lsp) then
-					local custom_opts = require('plugins/lsp/lsp_servers/' .. lsp)
-
-					opts = vim.tbl_deep_extend('force', opts, custom_opts)
-
-					opts.on_attach = lsp_utils.on_attach(function(client, bufnr)
-						if custom_opts.on_attach then
-							custom_opts.on_attach(client, bufnr)
-						end
-						if lsp == 'tsserver' then
-							require('twoslash-queries').attach(client, bufnr)
-						end
-					end)
-				end
-
-				return opts
-			end
-
+			local lsp_opts = {
+				on_attach = lsp_utils.on_attach(),
+				capabilities = lsp_utils.capabilities(),
+				handlers = lsp_utils.handlers()
+			}
 			local servers = require('mason-lspconfig').get_installed_servers()
 			local skipped_servers = { 'tsserver', 'rust_analyzer' }
 
 			for _, lsp in ipairs(servers) do
-				local opts = get_server_options(lsp)
+				local opts = vim.deepcopy(lsp_opts)
+
+				if pcall(require, 'plugins/lsp/lsp_servers/' .. lsp) then
+					local custom_opts = require('plugins/lsp/lsp_servers/' .. lsp)
+					opts = vim.tbl_deep_extend('force', lsp_opts, custom_opts)
+				end
 
 				if not vim.tbl_contains(skipped_servers, lsp) then
 					require('lspconfig')[lsp].setup(opts)

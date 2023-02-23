@@ -12,6 +12,10 @@ local inlay_hints = {
 	includeInlayVariableTypeHints = true,
 }
 
+opts.on_attach = require('plugins.lsp.utils').on_attach(function(client, bufnr)
+	require('twoslash-queries').attach(client, bufnr)
+end)
+
 opts.root_dir = util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json')
 opts.single_file_support = not util.root_pattern('deno.json*')
 
