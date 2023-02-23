@@ -12,6 +12,7 @@ local M = {
 			'marilari88/twoslash-queries.nvim'
 		},
 		config = function()
+			local lsp_utils = require('plugins.lsp.utils')
 			-- lspinfo window border
 			require('lspconfig.ui.windows').default_options.border = 'rounded'
 
@@ -19,19 +20,12 @@ local M = {
 
 
 			-- nvim-cmp supports additional completion capabilities
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			if pcall(require, 'cmp_nvim_lsp') then
-				capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-			end
-
-			local handlers = {
-				['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-				['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-			}
+			local capabilities = lsp_utils.capabilities()
+			local handlers = lsp_utils.handlers()
 
 			local function get_server_options(lsp)
 				local opts = {
-					on_attach = require('plugins.lsp.utils').on_attach(),
+					on_attach = lsp_utils.on_attach(),
 					capabilities = vim.deepcopy(capabilities),
 					handlers = handlers
 				}
@@ -41,7 +35,7 @@ local M = {
 
 					opts = vim.tbl_deep_extend('force', opts, custom_opts)
 
-					opts.on_attach = require('plugins.lsp.utils').on_attach(function(client, bufnr)
+					opts.on_attach = lsp_utils.on_attach(function(client, bufnr)
 						if custom_opts.on_attach then
 							custom_opts.on_attach(client, bufnr)
 						end
