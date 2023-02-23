@@ -17,16 +17,6 @@ local M = {
 
 			require('plugins.lsp.diagnostics').setup()
 
-			local on_attach = function(client, bufnr)
-				require('plugins.lsp.keys').setup(bufnr)
-				require('plugins.lsp.formatting').setup(client, bufnr)
-				require('plugins.lsp.autocmds').setup(client, bufnr)
-
-				-- inlayhints
-				if client.server_capabilities.inlayHintProvider then
-					require('lsp-inlayhints').on_attach(client, bufnr, true)
-				end
-			end
 
 			-- nvim-cmp supports additional completion capabilities
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -41,7 +31,7 @@ local M = {
 
 			local function get_server_options(lsp)
 				local opts = {
-					on_attach = on_attach,
+					on_attach = require('plugins.lsp.utils').on_attach(),
 					capabilities = vim.deepcopy(capabilities),
 					handlers = handlers
 				}
@@ -51,15 +41,14 @@ local M = {
 
 					opts = vim.tbl_deep_extend('force', opts, custom_opts)
 
-					opts.on_attach = function(client, bufnr)
-						on_attach(client, bufnr)
+					opts.on_attach = require('plugins.lsp.utils').on_attach(function(client, bufnr)
 						if custom_opts.on_attach then
 							custom_opts.on_attach(client, bufnr)
 						end
 						if lsp == 'tsserver' then
 							require('twoslash-queries').attach(client, bufnr)
 						end
-					end
+					end)
 				end
 
 				return opts
