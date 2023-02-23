@@ -15,38 +15,38 @@ local M = {
 			local lsp_utils = require('plugins.lsp.utils')
 			-- lspinfo window border
 			require('lspconfig.ui.windows').default_options.border = 'rounded'
-
+			-- set diagnostics options
 			require('plugins.lsp.diagnostics').setup()
 
-			local lsp_opts = {
-				on_attach = lsp_utils.on_attach(),
-				capabilities = lsp_utils.capabilities(),
-				handlers = lsp_utils.handlers()
-			}
-			local servers = require('mason-lspconfig').get_installed_servers()
-			local skipped_servers = { 'tsserver', 'rust_analyzer' }
+			local server_options = require('plugins.lsp.server-options').options
+			local function get_server_options(server)
+				local lsp_opts = {
+					on_attach = lsp_utils.on_attach(),
+					capabilities = lsp_utils.capabilities(),
+					handlers = lsp_utils.handlers()
+				}
+				return server_options[server]
+					and vim.tbl_deep_extend('force', lsp_opts, server_options[server])
+					or lsp_opts
+			end
 
-			for _, lsp in ipairs(servers) do
-				local opts = vim.deepcopy(lsp_opts)
-
-				if pcall(require, 'plugins/lsp/lsp_servers/' .. lsp) then
-					local custom_opts = require('plugins/lsp/lsp_servers/' .. lsp)
-					opts = vim.tbl_deep_extend('force', lsp_opts, custom_opts)
-				end
-
-				if not vim.tbl_contains(skipped_servers, lsp) then
+			require('mason-lspconfig').setup_handlers({
+				function(lsp)
+					local opts = get_server_options(lsp)
 					require('lspconfig')[lsp].setup(opts)
-				end
+				end,
+				['tsserver'] = function()
+					local opts = get_server_options('tsserver')
 
-				if lsp == 'tsserver' then
 					if pcall(require, 'typescript') then
 						require('typescript').setup({ server = opts })
 					else
 						require('lspconfig')['tsserver'].setup(opts)
 					end
-				end
+				end,
+				['rust_analyzer'] = function()
+					local opts = get_server_options('rust_analyzer')
 
-				if lsp == 'rust_analyzer' then
 					if pcall(require, 'rust-tools') then
 						require('rust-tools').setup({
 							server = opts,
@@ -58,7 +58,7 @@ local M = {
 						require('lspconfig')['rust_analyzer'].setup(opts)
 					end
 				end
-			end
+			})
 		end
 	},
 	{
