@@ -103,7 +103,8 @@ M.options = {
 						indent_size = '4',
 						quote_style = 'single',
 						call_arg_parentheses = 'keep',
-						align_call_args = true,
+						max_line_length = 120
+						-- align_call_args = true,
 					}
 				},
 				hint = {

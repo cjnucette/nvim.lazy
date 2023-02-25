@@ -14,8 +14,8 @@ return {
 	},
 	keys = {
 		{ '<C-space>', desc = 'Treesitter: Increment selection' },
-		{ '<bs>', desc = 'Treesitter: Decrement selection', mode = 'x' },
-		{ '<C-s>', desc = 'Treesitter: Increment selection by scope' },
+		{ '<bs>',      desc = 'Treesitter: Decrement selection',         mode = 'x' },
+		{ '<C-s>',     desc = 'Treesitter: Increment selection by scope' },
 	},
 	config = function()
 		require('nvim-treesitter.configs').setup {

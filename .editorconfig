@@ -5,10 +5,12 @@ indent_style = tab
 indent_size = 4
 
 [*.lua]
+indent_style = tab
+indent_size = 4
 quote_style = single
-max_line_length = 120 
+max_line_length = 120
 call_arg_parentheses = keep
-align_call_args = true
+# align_call_args = true
 
 [{*.py, *.rs}]
 indent_size = 4
