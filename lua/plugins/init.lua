@@ -29,15 +29,18 @@ return {
 	'b0o/schemastore.nvim',
 	{ 'rafcamlet/nvim-luapad',  cmd = { 'Luapad', 'LuaRun' } },
 	{ 'tpope/vim-fugitive',     cmd = 'G' },
-	{ 'windwp/nvim-autopairs',  opts = { check_ts = true },  event = 'BufReadPre' },
 	-- { 'ethanholz/nvim-lastplace', config = true, event = 'BufReadPre' },
 	-- {
 	-- 	'altermo/ultimate-autopair.nvim',
 	-- 	event = { 'InsertEnter', 'CmdlineEnter' },
 	-- 	config = true
 	-- },
-	{ 'kylechui/nvim-surround', version = '*',               config = true,       event = 'InsertEnter' },
+	{ 'kylechui/nvim-surround', version = '*',               config = true, event = 'InsertEnter' },
 	{ 'stevearc/oil.nvim',      config = true,               cmd = 'Oil' },
+	{ 'windwp/nvim-autopairs',
+		event = { 'BufReadPre', 'BufNewFile' },
+		opts = { check_ts = true }
+	},
 	{ 'lvimuser/lsp-inlayhints.nvim', opts = {
 		inlay_hints = {
 			type_hints = {
