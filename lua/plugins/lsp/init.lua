@@ -17,7 +17,7 @@ local M = {
 			require('lspconfig.ui.windows').default_options.border = 'rounded'
 			-- set diagnostics options
 			require('plugins.lsp.diagnostics').setup()
-
+			-- used by setup_handlers
 			local server_options = require('plugins.lsp.server-options').options
 			local function get_server_options(server)
 				local lsp_opts = {
@@ -29,7 +29,7 @@ local M = {
 					and vim.tbl_deep_extend('force', lsp_opts, server_options[server])
 					or lsp_opts
 			end
-
+			-- automatic server configuration
 			require('mason-lspconfig').setup_handlers({
 				function(lsp)
 					local opts = get_server_options(lsp)
