@@ -13,6 +13,26 @@ function M.config()
 	local signs = require('utils').signs
 	local capitalize = require('utils').capitalize
 	local lsp_attached = require('utils').lsp_attached
+	local get_color = require('utils').get_color
+
+	local main_color = 'StatusLine'
+
+	local sections_colors = {
+		a = main_color,
+		b = main_color,
+		c = main_color,
+		x = main_color,
+		y = main_color,
+		z = main_color,
+	}
+	local mono_theme = {
+		normal = sections_colors,
+		insert = sections_colors,
+		visual = sections_colors,
+		replace = sections_colors,
+		command = sections_colors,
+		inactive = sections_colors,
+	}
 
 	local function has_space()
 		return vim.o.columns >= 80
@@ -28,6 +48,12 @@ function M.config()
 			warn = signs.warning .. ' ',
 			info = signs.information .. ' ',
 			hint = signs.hint .. ' '
+		},
+		diagnostics_color = {
+			error = { fg = get_color('DiagnosticError').fg, bg = get_color(main_color).bg },
+			warn = { fg = get_color('DiagnosticWarn').fg, bg = get_color(main_color).bg },
+			info = { fg = get_color('DiagnosticInfo').fg, bg = get_color(main_color).bg },
+			hint = { fg = get_color('DiagnosticHint').fg, bg = get_color(main_color).bg },
 		},
 		-- colored = false,
 		update_in_insert = false,
@@ -59,19 +85,30 @@ function M.config()
 			modified = signs.modify,
 			removed = signs.delete
 		},
-		cond = has_space,
+		diff_color = {
+			added = { fg = get_color('DiffAdd').fg, bg = get_color(main_color).bg },
+			modified = { fg = get_color('DiffChange').fg, bg = get_color(main_color).bg },
+			removed = { fg = get_color('DiffDelete').fg, bg = get_color(main_color).bg },
+		}
+		-- cond = has_space,
 	}
 
-	local encoding = {
-		'encoding',
-		fmt = string.upper,
-		cond = has_space
-	}
-
-	local fileformat = {
-		'fileformat',
-		cond = has_space
-	}
+	-- local encoding = {
+	-- 	'encoding',
+	-- 	fmt = string.upper,
+	-- 	cond = has_space
+	-- }
+	--
+	-- local fileformat = {
+	-- 	'fileformat',
+	-- 	cond = has_space
+	-- }
+	--
+	-- local function spaces()
+	-- 	local msg = 'Spaces: '
+	-- 	if not has_space() then msg = 'S: ' end
+	-- 	return msg .. vim.opt.shiftwidth:get()
+	-- end
 
 	local filetype = {
 		'filetype',
@@ -103,11 +140,6 @@ function M.config()
 		end
 	end
 
-	local function spaces()
-		local msg = 'Spaces: '
-		if not has_space() then msg = 'S: ' end
-		return msg .. vim.opt.shiftwidth:get()
-	end
 
 	local function package_info()
 		if not has_space() then
@@ -120,7 +152,8 @@ function M.config()
 		if not has_space() then
 			return ''
 		end
-		return ' ' .. os.date('%I:%M %p')
+		-- return ' ' .. os.date('%I:%M %p')
+		return os.date('%I:%M %p')
 	end
 
 	-- extensions
@@ -210,8 +243,8 @@ function M.config()
 			globalstatus = true,
 			component_separators = '',
 			section_separators = '',
-			color = 'BufferLineTab',
-			theme = { normal = {} },
+			-- color = main_color,
+			theme = mono_theme,
 			disabled_filetypes = {
 				statusline = {},
 				winbar = {}
@@ -242,8 +275,9 @@ function M.config()
 				},
 				my_location
 			},
-			lualine_y = { spaces, encoding, fileformat },
-			lualine_z = { filetype }
+			-- lualine_y = { spaces, encoding, fileformat },
+			lualine_y = {},
+			lualine_z = { filetype, clock }
 		},
 		extensions = { neo_tree, toggleterm, package_manager, telescope, mason, checkhealth }
 	})
