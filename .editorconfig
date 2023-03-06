@@ -10,7 +10,7 @@ indent_size = 4
 quote_style = single
 max_line_length = 120
 call_arg_parentheses = keep
-# align_call_args = true
+align_array_table = false
 
 [{*.py, *.rs}]
 indent_size = 4
