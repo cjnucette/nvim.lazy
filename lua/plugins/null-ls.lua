@@ -1,7 +1,7 @@
 local M = {
 	'jose-elias-alvarez/null-ls.nvim',
 	event = { 'BufReadPre', 'BufNewFile' },
-	enabled = false,
+	-- enabled = false,
 	dependencies = {
 		'jose-elias-alvarez/typescript.nvim',
 	}
@@ -44,15 +44,12 @@ function M.config()
 	end
 
 	local formatting = nullls.builtins.formatting
-	local diagnostics = nullls.builtins.diagnostics
 	local code_actions = nullls.builtins.code_actions
 
 	nullls.setup({
 		sources = {
 			formatting.prettier.with(prettier_conf()),
 			formatting.shfmt.with(shfmt_conf()),
-			diagnostics.shellcheck,
-			code_actions.shellcheck,
 			code_actions.gitsigns,
 			require('typescript.extensions.null-ls.code-actions'),
 		},
