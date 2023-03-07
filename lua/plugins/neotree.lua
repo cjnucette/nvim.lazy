@@ -1,14 +1,27 @@
 return {
 	'nvim-neo-tree/neo-tree.nvim',
 	branch = 'v2.x',
-	cmd = 'NeoTreeReveal',
+	cmd = { 'NeoTreeReveal', 'Neotree' },
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 		'nvim-tree/nvim-web-devicons',
 		'MunifTanjim/nui.nvim'
 	},
 	keys = {
-		{ '<leader>e', '<cmd>NeoTreeReveal<CR>', noremap = true, silent = true, desc = 'NeoTree: Toggle file explorer' }
+		{
+			'<leader>e',
+			'<cmd>NeoTreeRevealToggle<CR>',
+			noremap = true,
+			silent = true,
+			desc = 'NeoTree: Toggle file explorer'
+		},
+		{
+			'<leader>el',
+			'<cmd>Neotree left<CR>',
+			noremap = true,
+			silent = true,
+			desc = 'NeoTree: Open file [e]xplorer in [s]idebar'
+		}
 	},
 	opts = function()
 		local signs = require('utils').signs
@@ -35,18 +48,20 @@ return {
 					align = 'right',
 				},
 			},
-			window = { -- see https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/popup for
+			window = {
+				-- see https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/popup for
 				width = 30,
 				position = 'float',
-				popup = { -- settings that apply to float position only
+				popup = {
+					-- settings that apply to float position only
 					size = {
 						height = '70%',
 						width = '50%',
 					},
 				},
 				mappings = {
-					['l'] = 'open',
-					['h'] = 'close_node',
+						['l'] = 'open',
+						['h'] = 'close_node',
 				},
 			},
 			filesystem = {
