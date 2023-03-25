@@ -31,7 +31,15 @@ function M.config()
 					end
 				end
 				return table.concat(s, ' ')
-			end
+			end,
+			offsets = {
+				{
+					filetype = 'neo-tree',
+					text = 'Neo-tree',
+					highlight = 'Directory',
+					text_align = 'left'
+				}
+			}
 		}
 	})
 end
