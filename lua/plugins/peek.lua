@@ -1,21 +1,15 @@
-local M = {
-	'toppair/peek.nvim', build = 'deno task --quiet build:fast'
+return {
+	'toppair/peek.nvim',
+	build = 'deno task --quiet build:fast',
+	config = true,
+	ft = 'markdown',
+	cmd = 'MarkdownPreview',
+	keys = function()
+		vim.api.nvim_create_user_command('MarkdownPreview', function() require('peek').open() end, {})
+		vim.api.nvim_create_user_command('MarkdownPreviewClose', function() require('peek').close() end, {})
+		return {
+			{ '<leader>mo', vim.cmd.MarkdownPreview, desc = 'Peek: [M]arkdown Preview [O]pen' },
+			{ '<leader>mc', vim.cmd.MarkdownPreviewClose, desc = 'Peek: [M]arkdown Preview [C]lose' },
+		}
+	end,
 }
-
-function M.config()
-	require('peek').setup()
-end
-
-function M.init()
-	local peek = require('peek')
-	vim.api.nvim_create_user_command('MarkdownPreview', peek.open, {})
-	vim.api.nvim_create_user_command('MarkdownPreviewClose', peek.close, {})
-
-	vim.keymap.set('n', '<leader>mp', vim.cmd.MarkdownPreview, {
-		noremap = true,
-		silent = true,
-		desc = 'Peek: [M]arkdown [P]review'
-	})
-end
-
-return M
