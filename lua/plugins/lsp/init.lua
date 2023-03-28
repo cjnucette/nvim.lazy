@@ -64,7 +64,7 @@ local M = {
 	{
 		'williamboman/mason.nvim',
 		cmd = 'Mason',
-		keys = { { '<leader>lm', '<cmd>Mason<cr>', desc = 'Mason: open dashboard' } },
+		keys = { { '<leader>om', '<cmd>Mason<cr>', desc = 'Mason: [O]pen [M]ason dashboard' } },
 		opts = {
 			ui = { border = 'rounded' },
 			install_root_dir = vim.fn.stdpath('config') .. '/mason'
