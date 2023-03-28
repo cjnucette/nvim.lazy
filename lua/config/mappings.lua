@@ -11,6 +11,10 @@ map('n', '<s-tab>', vim.cmd.bp, { desc = 'Goto the prev buffer' })
 -- map('n', '<leader>u', 'mzviw~`z', { desc = 'Toggle capitalization of word under the cursor' })
 map('n', '<leader>u', 'gUbel', { desc = 'Toggle capitalization of word under the cursor' })
 
+-- up and down work as expected
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
 map('v', '<', '<gv', { desc = 'Un-indent current selection and keep the selection' })
 map('v', '>', '>gv', { desc = 'Indent current selection and keep the selection' })
 
