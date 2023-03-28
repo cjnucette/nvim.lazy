@@ -1,9 +1,14 @@
 return {
-	'jcdickinson/codeium.nvim',
-	dependencies = {
-		'nvim-lua/plenary.nvim',
-		'MunifTanjim/nui.nvim'
+	{
+		'jcdickinson/http.nvim',
+		build = 'cargo build --workspace --release',
 	},
-	config = true
+	{
+		'jcdickinson/codeium.nvim',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'MunifTanjim/nui.nvim'
+		},
+		config = true
+	}
 }
-
