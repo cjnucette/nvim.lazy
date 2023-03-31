@@ -1,7 +1,7 @@
 return {
 	{
 		'kevinhwang91/nvim-ufo',
-		event = 'BufReadPost',
+		event = 'BufRead',
 		dependencies = {
 			'kevinhwang91/promise-async',
 			'luukvbaal/statuscol.nvim'
