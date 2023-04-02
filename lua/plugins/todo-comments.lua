@@ -1,6 +1,6 @@
 return {
 	'folke/todo-comments.nvim',
-	dependecies = {
+	dependencies = {
 		'folke/trouble.nvim'
 	},
 	event = 'BufReadPost',
