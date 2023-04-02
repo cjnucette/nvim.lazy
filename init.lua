@@ -6,7 +6,7 @@ require('config.lazy')
 
 -- Some autocmds don't work if loaded in the autocmd below
 -- mappings and autocmds can wait
-if vim.fn.argc( -1) == 0 then
+if vim.fn.argc(-1) == 0 then
 	vim.api.nvim_create_autocmd('User', {
 		desc = 'autocmds and mappings can wait to load',
 		group = vim.api.nvim_create_augroup('lazyvim', { clear = true }),
