@@ -2,6 +2,7 @@ return {
 	{
 		'jcdickinson/http.nvim',
 		build = 'cargo build --workspace --release',
+		enabled = false,
 	},
 	{
 		'jcdickinson/codeium.nvim',
