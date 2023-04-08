@@ -1,9 +1,7 @@
 return {
 	'toppair/peek.nvim',
 	build = 'deno task --quiet build:fast',
-	config = function()
-		require('peek').setup()
-	end,
+	config = true,
 	ft = 'markdown',
 	cmd = 'MarkdownPreview',
 	keys = function()
