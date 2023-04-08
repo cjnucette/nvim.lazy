@@ -91,12 +91,6 @@ local M = {
 		}
 	},
 	{
-		'jay-babu/mason-null-ls.nvim',
-		opts = {
-			ensure_installed = { 'prettier', 'shfmt', 'shellcheck' }
-		}
-	},
-	{
 		'marilari88/twoslash-queries.nvim',
 		config = function()
 			require('twoslash-queries').setup({
