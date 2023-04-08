@@ -5,7 +5,7 @@ return {
 	-- 	pcall(require('nvim-treesitter.install').update { with_sync = true })
 	-- end,
 	build = ':TSUpdate',
-	event = 'BufReadPost',
+	event = { 'BufReadPost', 'BufNewFile' },
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter-textobjects',
 		'windwp/nvim-ts-autotag',
@@ -21,9 +21,9 @@ return {
 	config = function()
 		require('nvim-treesitter.configs').setup {
 			highlight = { enable = true },
-			-- indent = { enable = true, disable = { 'jsx', 'tsx' } },
 			indent = { enable = true },
-			context_commentstring = { enable = true, enable_autocmd = false },
+			autotag = { enable = true },
+			context_commentstring = { enable = true },
 			ensure_installed = {
 				'lua',
 				'rust',
@@ -40,9 +40,9 @@ return {
 				'vim',
 				'http',
 				'svelte',
-				'astro'
+				'astro',
+				'nix'
 			},
-			autotag = { enable = true },
 			incremental_selection = {
 				enable = true,
 				keymaps = {
