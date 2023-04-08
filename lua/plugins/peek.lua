@@ -3,7 +3,7 @@ return {
 	build = 'deno task --quiet build:fast',
 	config = true,
 	ft = 'markdown',
-	cmd = 'MarkdownPreview',
+	event = { 'BufRead', 'BufNewFile', 'BufReadPost' },
 	keys = function()
 		vim.api.nvim_create_user_command('MarkdownPreview', function() require('peek').open() end, {})
 		vim.api.nvim_create_user_command('MarkdownPreviewClose', function() require('peek').close() end, {})
