@@ -18,10 +18,9 @@ return {
 		priority = 1000,
 		cond = vim.fn.hostname() == 'alpha',
 		config = function()
-			local opts = {
+			require('tokyonight').setup({
 				style = 'night'
-			}
-			require('tokyonight').setup(opts)
+			})
 			vim.cmd.colorscheme('tokyonight')
 		end
 	},
