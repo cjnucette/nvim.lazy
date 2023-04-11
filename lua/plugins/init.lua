@@ -4,11 +4,11 @@ return {
 		name = 'catppuccin',
 		lazy = false,
 		priority = 1000,
-		cond = vim.fn.hostname() ~= 'alpha',
+		cond = vim.fn.hostname() == 'beta',
 		config = function()
-			-- require('catppuccin').setup({
-			-- 	flavour = 'mocha' -- latte, frappe, macchiato, mocha
-			-- })
+			require('catppuccin').setup({
+				flavour = 'mocha' -- latte, frappe, macchiato, mocha
+			})
 			vim.cmd.colorscheme('catppuccin')
 		end
 	},
@@ -27,28 +27,26 @@ return {
 	},
 	'bluz71/vim-nightfly-colors',
 	'b0o/schemastore.nvim',
-	{ 'rafcamlet/nvim-luapad',  cmd = { 'Luapad', 'LuaRun' } },
-	{ 'tpope/vim-fugitive',     cmd = 'G' },
-	-- { 'ethanholz/nvim-lastplace', config = true, event = 'BufReadPre' },
-	-- {
-	-- 	'altermo/ultimate-autopair.nvim',
-	-- 	event = { 'InsertEnter', 'CmdlineEnter' },
-	-- 	config = true
-	-- },
-	{ 'kylechui/nvim-surround', version = '*',               config = true, event = 'InsertEnter' },
-	{ 'stevearc/oil.nvim',      config = true,               cmd = 'Oil' },
-	{ 'windwp/nvim-autopairs',
+	{ 'rafcamlet/nvim-luapad', cmd = { 'Luapad', 'LuaRun' } },
+	{ 'tpope/vim-fugitive', cmd = 'G' },
+	{ 'kylechui/nvim-surround', version = '*', config = true, event = 'InsertEnter' },
+	{ 'stevearc/oil.nvim', config = true, cmd = 'Oil' },
+	{
+		'windwp/nvim-autopairs',
 		event = { 'BufReadPre', 'BufNewFile' },
 		opts = { check_ts = true }
 	},
-	{ 'lvimuser/lsp-inlayhints.nvim', opts = {
-		inlay_hints = {
-			type_hints = {
-				separator = ''
-			},
-			only_current_line = true
+	{
+		'lvimuser/lsp-inlayhints.nvim',
+		opts = {
+			inlay_hints = {
+				type_hints = {
+					separator = ''
+				},
+				only_current_line = true
+			}
 		}
-	} },
+	},
 	-- dev
 	{ 'cjnucette/scripts.nvim', dev = true }
 }
