@@ -12,7 +12,7 @@ local inlay_hints = {
 }
 
 M.options = {
-		['cssls'] = {
+	['cssls'] = {
 		on_attach = utils.on_attach(function(client, _)
 			client.server_capabilities.documentFormattingProvider = true
 			client.server_capabilities.documentRangeFormattingProvider = true
@@ -29,10 +29,10 @@ M.options = {
 			},
 		}
 	},
-		['emmet_ls'] = {
+	['emmet_ls'] = {
 		filetypes = { 'css', 'scss' }
 	},
-		['html'] = {
+	['html'] = {
 		on_attach = utils.on_attach(function(client, _)
 			client.server_capabilities.documentFormattingProvider = true
 			client.server_capabilities.documentRangeFormattingProvider = true
@@ -63,7 +63,7 @@ M.options = {
 			}
 		}
 	},
-		['jsonls'] = {
+	['jsonls'] = {
 		on_attach = utils.on_attach(function(client, _)
 			client.server_capabilities.documentFormattingProvider = true
 			client.server_capabilities.documentRangeFormattingProvider = true
@@ -77,7 +77,7 @@ M.options = {
 			}
 		}
 	},
-		['ltex'] = {
+	['ltex'] = {
 		settings = {
 			ltex = {
 				completionEnabled = false,
@@ -85,7 +85,7 @@ M.options = {
 			}
 		}
 	},
-		['lua_ls'] = {
+	['lua_ls'] = {
 		on_attach = utils.on_attach(function(client, _)
 			client.server_capabilities.documentFormattingProvider = true
 			client.server_capabilities.documentRangeFormattingProvider = true
@@ -130,7 +130,7 @@ M.options = {
 		}
 
 	},
-		['tsserver'] = {
+	['tsserver'] = {
 		on_attach = utils.on_attach(function(client, bufnr)
 			require('twoslash-queries').attach(client, bufnr)
 		end),
