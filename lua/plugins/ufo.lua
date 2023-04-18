@@ -8,8 +8,8 @@ return {
 		},
 		keys = {
 			{ '<space><space>', 'za', { desc = 'UFO: toggle fold' } },
-			{ 'zR', require('ufo').openAllFolds, { desc = 'UFO: unfold all' } },
-			{ 'zM', require('ufo').closeAllFolds, { desc = 'UFO: close all folds' } },
+			{ 'zR', function() require('ufo').openAllFolds() end, { desc = 'UFO: unfold all' } },
+			{ 'zM', function() require('ufo').closeAllFolds() end, { desc = 'UFO: close all folds' } },
 			{ 'zK', function() require('ufo').peekFoldedLinesUnderCursor() end,
 				{ desc = 'UFO: Peek folded lines under the cursor' } },
 		},
