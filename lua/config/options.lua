@@ -27,7 +27,7 @@ vim.opt.laststatus = 3
 vim.opt.showmode = false
 
 vim.opt.tabstop = 4
-vim.opt.shiftwidth = 0 -- uses tabstop's value
+vim.opt.shiftwidth = 0   -- uses tabstop's value
 vim.opt.softtabstop = -1 -- uses shiftwidth's value
 vim.opt.expandtab = false
 vim.opt.shiftround = true
@@ -49,7 +49,7 @@ vim.opt.incsearch = true
 vim.opt.hlsearch = false
 
 vim.opt.list = true
-vim.opt.listchars = { tab = '> ', trail = '·' }
+vim.opt.listchars = { tab = '  ', trail = '·' }
 vim.opt.fillchars = { eob = ' ' } -- removes those pesky ~ at the end of the file
 
 vim.opt.wildmode = 'longest:full,full'
