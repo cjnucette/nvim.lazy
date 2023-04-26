@@ -82,7 +82,6 @@ local M = {
 				'emmet_ls',
 				'jsonls',
 				'bashls',
-				'ltex',
 				'denols',
 				'rust_analyzer',
 				'eslint',

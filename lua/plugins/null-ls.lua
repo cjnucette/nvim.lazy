@@ -47,18 +47,24 @@ return {
 
 			local formatting = nls.builtins.formatting
 			local code_actions = nls.builtins.code_actions
+			local diagnostics = nls.builtins.diagnostics
 
 			nls.setup({
 				sources = {
 					formatting.prettier.with(prettier_conf()),
 					formatting.shfmt.with(shfmt_conf()),
+					diagnostics.proselint,
+					diagnostics.write_good,
+					diagnostics.alex,
 					code_actions.gitsigns,
+					code_actions.proselint,
 					require('typescript.extensions.null-ls.code-actions'),
+
 				},
 				update_in_insert = false
 			})
 			mnls.setup({
-				ensure_installed = { 'prettier', 'shfmt' },
+				ensure_installed = { 'prettier', 'shfmt', 'alex', 'proselint', 'write-good' },
 				automatic_setup = true,
 				handlers = {}
 			})
