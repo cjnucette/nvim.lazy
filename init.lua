@@ -25,3 +25,6 @@ vim.env.BASH_ENV = './.vim_bash_env'
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+-- python executable
+vim.g.python3_host_prog = '~/.venv/' .. vim.fn.hostname() .. '/bin/python3'
