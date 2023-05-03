@@ -28,8 +28,8 @@ return {
 	'b0o/schemastore.nvim',
 	{ 'rafcamlet/nvim-luapad', cmd = { 'Luapad', 'LuaRun' } },
 	{ 'tpope/vim-fugitive', cmd = 'G' },
+	-- {ys,cs,ds} + motion, S + selection
 	{ 'kylechui/nvim-surround', version = '*', config = true, event = 'InsertEnter' },
-	{ 'stevearc/oil.nvim', config = true, cmd = 'Oil' },
 	{
 		'windwp/nvim-autopairs',
 		event = { 'BufReadPre', 'BufNewFile' },
