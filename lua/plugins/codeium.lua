@@ -10,6 +10,7 @@ return {
 			'nvim-lua/plenary.nvim',
 			'MunifTanjim/nui.nvim'
 		},
-		config = true
+		config = true,
+		enabled = false,
 	}
 }
