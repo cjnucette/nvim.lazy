@@ -3,3 +3,4 @@ mason/
 .repro/
 lazy-lock.json
 *.bak
+.env
