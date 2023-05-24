@@ -30,7 +30,22 @@ return {
 			close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 			popup_border_style = 'rounded',
 			follow_current_file = true,
+			enable_git_status = true,
+			enable_diagnostics = true,
+			source_selector = {
+				winbar = true,
+				sources = {
+					{ source = "filesystem" },
+					{ source = "git_status" },
+					{ source = "buffers" },
+				},
+				content_layout = "center", -- string
+				tabs_layout = "active",
+			},
 			default_component_configs = {
+				container = {
+					enable_character_fade = true
+				},
 				git_status = {
 					symbols = {
 						-- Change type
@@ -47,6 +62,14 @@ return {
 					},
 					align = 'right',
 				},
+				diagnostics = {
+					symbols = {
+						hint = signs.hint,
+						info = signs.information,
+						warn = signs.warning,
+						error = signs.error
+					}
+				}
 			},
 			window = {
 				-- see https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/popup for
@@ -60,8 +83,8 @@ return {
 					},
 				},
 				mappings = {
-						['l'] = 'open',
-						['h'] = 'close_node',
+					['l'] = 'open',
+					['h'] = 'close_node',
 				},
 			},
 			filesystem = {
