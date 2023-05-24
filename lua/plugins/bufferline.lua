@@ -1,20 +1,17 @@
-local M = {
+local signs = require('utils').signs
+local severities = {
+	'error',
+	'warning'
+}
+
+return {
 	'akinsho/nvim-bufferline.lua',
 	version = '3.x',
 	event = 'VimEnter',
 	dependencies = {
 		'nvim-tree/nvim-web-devicons',
 	},
-}
-
-function M.config()
-	local signs = require('utils').signs
-	local severities = {
-		'error',
-		'warning'
-	}
-
-	require('bufferline').setup({
+	opts = {
 		options = {
 			view = 'multiwindow',
 			numbers = 'ordinal',
@@ -23,6 +20,7 @@ function M.config()
 			modified_icon = '*',
 			diagnostics = 'nvim_lsp',
 			always_show_bufferline = true,
+			separator_style = 'slant',
 			diagnostics_indicator = function(_, _, diag)
 				local s = {}
 				for _, severity in ipairs(severities) do
@@ -35,13 +33,11 @@ function M.config()
 			offsets = {
 				{
 					filetype = 'neo-tree',
-					text = 'Neo-tree',
-					highlight = 'Directory',
-					text_align = 'left'
+					text = 'Explorer',
+					--highlight = 'Directory',
+					text_align = 'center'
 				}
 			}
 		}
-	})
-end
-
-return M
+	}
+}
