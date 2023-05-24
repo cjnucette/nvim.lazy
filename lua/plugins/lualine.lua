@@ -162,7 +162,7 @@ function M.config()
 			lualine_a = {
 				{
 					'file_explorer',
-					fmt = function() return 'File Explorer%=' end,
+					fmt = function() return 'NeoTree%=' end,
 					icon = { '📂', color = { fg = 'orange' } },
 				}
 			}
