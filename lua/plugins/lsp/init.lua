@@ -85,7 +85,8 @@ local M = {
 				'denols',
 				'rust_analyzer',
 				'eslint',
-				'svelte'
+				'svelte',
+				'ltex'
 			}
 		}
 	},
