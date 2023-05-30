@@ -50,6 +50,7 @@ return {
 			},
 			rainbow = {
 				enable = true,
+				disable = { 'html' },
 				strategy = require('ts-rainbow.strategy.local')
 			}
 		}
