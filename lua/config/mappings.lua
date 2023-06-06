@@ -27,6 +27,18 @@ map('v', '<a-k>', ":m '<-2<CR>gv=gv",
 
 map('n', '<leader>cn', ':help news<CR>', { desc = '[C]heck what is [n]ew in neovim' })
 
--- text to speech
-map('n', '<leader>r', [[:execute 'silent !google_speech ' . '"' . getline('.') . '"'<cr>]],
-	{ desc = '[R]ead aloud the current line' })
+-- Read the current line asynchronously
+local say = function()
+	local uv = vim.loop
+	local handle
+	local on_exit = function()
+		if handle then
+			uv.close(handle)
+		end
+	end
+
+	handle = uv.spawn('google_speech', { args = { vim.fn.getline('.') } }, on_exit)
+end
+-- map('n', '<leader>r', [[:execute 'silent !google_speech ' . '"' . getline('.') . '"'<cr>]],
+-- 	{ desc = '[R]ead aloud the current line' })
+map('n', '<leader>r', function() say() end, { desc = '[R]ead aloud the current line' })
