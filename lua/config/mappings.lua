@@ -43,5 +43,5 @@ end
 -- 	{ desc = '[R]ead aloud the current line' })
 map('n', '<leader>r', function() say() end, { desc = '[R]ead aloud the current line' })
 
--- help with word under cursor
+-- help about word under cursor
 map('n', '<F1>', ':help <C-r><C-w><CR>', { desc = 'Find help for the word under the cursor' })
