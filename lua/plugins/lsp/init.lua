@@ -79,7 +79,7 @@ local M = {
 				'tsserver',
 				'html',
 				'cssls',
-				'emmet_ls',
+				'emmet_language_server',
 				'jsonls',
 				'bashls',
 				'denols',

@@ -29,9 +29,6 @@ M.options = {
 			},
 		}
 	},
-	['emmet_ls'] = {
-		filetypes = { 'css', 'scss' }
-	},
 	['html'] = {
 		on_attach = utils.on_attach(function(client, _)
 			client.server_capabilities.documentFormattingProvider = true
