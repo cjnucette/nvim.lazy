@@ -12,65 +12,65 @@ local inlay_hints = {
 }
 
 M.options = {
-	['cssls'] = {
-		on_attach = utils.on_attach(function(client, _)
-			client.server_capabilities.documentFormattingProvider = true
-			client.server_capabilities.documentRangeFormattingProvider = true
-		end),
-
-		settings = {
-			css = {
-				-- lint = {
-				-- 	unknownAtRules = 'ignore'
-				-- },
-				format = {
-					enable = true
-				}
-			},
-		}
-	},
-	['html'] = {
-		on_attach = utils.on_attach(function(client, _)
-			client.server_capabilities.documentFormattingProvider = true
-			client.server_capabilities.documentRangeFormattingProvider = true
-		end),
-
-		settings = {
-			html = {
-				autoClosingTags = true,
-				autoCreateQuotes = true,
-				format = {
-					enable = true,
-					indentInnerHtml = true,
-					templating = true,
-					wrapLineLength = 120,
-					wrapAttributes = 'auto',
-				},
-				hover = {
-					documentation = true,
-					references = true,
-				},
-				suggest = {
-					html5 = true,
-				},
-				validate = {
-					scripts = true,
-					styles = true
-				}
-			}
-		}
-	},
+	-- ['cssls'] = {
+	-- 	on_attach = utils.on_attach(function(client, _)
+	-- 		client.server_capabilities.documentFormattingProvider = true
+	-- 		client.server_capabilities.documentRangeFormattingProvider = true
+	-- 	end),
+	--
+	-- 	settings = {
+	-- 		css = {
+	-- 			-- lint = {
+	-- 			-- 	unknownAtRules = 'ignore'
+	-- 			-- },
+	-- 			format = {
+	-- 				enable = true
+	-- 			}
+	-- 		},
+	-- 	}
+	-- },
+	-- ['html'] = {
+	-- 	on_attach = utils.on_attach(function(client, _)
+	-- 		client.server_capabilities.documentFormattingProvider = true
+	-- 		client.server_capabilities.documentRangeFormattingProvider = true
+	-- 	end),
+	--
+	-- 	settings = {
+	-- 		html = {
+	-- 			autoClosingTags = true,
+	-- 			autoCreateQuotes = true,
+	-- 			format = {
+	-- 				enable = true,
+	-- 				indentInnerHtml = true,
+	-- 				templating = true,
+	-- 				wrapLineLength = 120,
+	-- 				wrapAttributes = 'auto',
+	-- 			},
+	-- 			hover = {
+	-- 				documentation = true,
+	-- 				references = true,
+	-- 			},
+	-- 			suggest = {
+	-- 				html5 = true,
+	-- 			},
+	-- 			validate = {
+	-- 				scripts = true,
+	-- 				styles = true
+	-- 			}
+	-- 		}
+	-- 	}
+	-- },
 	['jsonls'] = {
-		on_attach = utils.on_attach(function(client, _)
-			client.server_capabilities.documentFormattingProvider = true
-			client.server_capabilities.documentRangeFormattingProvider = true
-		end),
+		-- on_attach = utils.on_attach(function(client, _)
+		-- 	client.server_capabilities.documentFormattingProvider = true
+		-- 	client.server_capabilities.documentRangeFormattingProvider = true
+		-- end),
 
 		settings = {
 			json = {
 				schemas = require('schemastore').json.schemas(),
 				validate = { enable = true },
-				format = { enable = true },
+				-- format = { enable = true },
 			}
 		}
 	},

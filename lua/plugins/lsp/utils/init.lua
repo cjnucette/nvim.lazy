@@ -3,7 +3,7 @@ local M = {}
 M.on_attach = function(on_attach)
 	return function(client, bufnr)
 		require('plugins.lsp.keys').setup(bufnr)
-		require('plugins.lsp.formatting').setup(client, bufnr)
+		-- require('plugins.lsp.formatting').setup(client, bufnr)
 		require('plugins.lsp.autocmds').setup(client, bufnr)
 
 		-- inlayhints

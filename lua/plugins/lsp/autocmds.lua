@@ -21,16 +21,16 @@ function M.setup(client, bufnr)
 		})
 	end
 
-	if client.supports_method('textDocument/formatting') then
-		vim.api.nvim_create_autocmd('BufWritePre', {
-			desc = 'Format on file save',
-			group = user_lsp_cmds,
-			buffer = bufnr,
-			callback = function()
-				vim.lsp.buf.format()
-			end,
-		})
-	end
+	-- if client.supports_method('textDocument/formatting') then
+	-- 	vim.api.nvim_create_autocmd('BufWritePre', {
+	-- 		desc = 'Format on file save',
+	-- 		group = user_lsp_cmds,
+	-- 		buffer = bufnr,
+	-- 		callback = function()
+	-- 			vim.lsp.buf.format()
+	-- 		end,
+	-- 	})
+	-- end
 end
 
 return M
