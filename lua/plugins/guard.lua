@@ -24,6 +24,9 @@ return {
 		end,
 		opts = {
 			format_on_save = true
+		},
+		keys = {
+			{'<leader>f', '<cmd>GuardFmt<cr>', { desc = 'Guard: [F]ormat'}}
 		}
 	},
 }
