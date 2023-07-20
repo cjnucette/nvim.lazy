@@ -1,6 +1,6 @@
 return {
 	'nvim-neo-tree/neo-tree.nvim',
-	branch = 'v2.x',
+	branch = 'v3.x',
 	cmd = { 'NeoTreeReveal', 'Neotree' },
 	dependencies = {
 		'nvim-lua/plenary.nvim',
@@ -10,17 +10,24 @@ return {
 	keys = {
 		{
 			'<leader>e',
-			'<cmd>NeoTreeRevealToggle<CR>',
+			'<cmd>Neotree toggle float<CR>',
 			noremap = true,
 			silent = true,
 			desc = 'NeoTree: Toggle file explorer'
 		},
 		{
 			'<leader>el',
-			'<cmd>Neotree left<CR>',
+			'<cmd>Neotree toggle left<CR>',
 			noremap = true,
 			silent = true,
-			desc = 'NeoTree: Open file [e]xplorer in [s]idebar'
+			desc = 'NeoTree: Open file [e]xplorer [l]eft'
+		},
+		{
+			'<leader>er',
+			'<cmd>Neotree toggle right<CR>',
+			noremap = true,
+			silent = true,
+			desc = 'NeoTree: Open file [e]xplorer [r]ight'
 		}
 	},
 	opts = function()
@@ -35,12 +42,12 @@ return {
 			source_selector = {
 				winbar = true,
 				sources = {
-					{ source = "filesystem" },
-					{ source = "git_status" },
-					{ source = "buffers" },
+					{ source = 'filesystem' },
+					{ source = 'git_status' },
+					{ source = 'buffers' },
 				},
-				content_layout = "center", -- string
-				tabs_layout = "active",
+				content_layout = 'center', -- string
+				tabs_layout = 'active',
 			},
 			default_component_configs = {
 				container = {
