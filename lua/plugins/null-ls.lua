@@ -2,7 +2,7 @@ return {
 	{
 		'jose-elias-alvarez/null-ls.nvim',
 		event = { 'BufReadPre', 'BufNewFile' },
-		-- enabled = false,
+		enabled = false,
 		dependencies = {
 			'jose-elias-alvarez/typescript.nvim',
 			'jay-babu/mason-null-ls.nvim',
