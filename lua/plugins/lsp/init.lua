@@ -6,7 +6,6 @@ local M = {
 			{ 'folke/neodev.nvim', config = true },
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
-			'jose-elias-alvarez/typescript.nvim',
 			'simrat39/rust-tools.nvim',
 			'lvimuser/lsp-inlayhints.nvim',
 			'marilari88/twoslash-queries.nvim'
@@ -34,15 +33,6 @@ local M = {
 				function(lsp)
 					local opts = get_server_options(lsp)
 					require('lspconfig')[lsp].setup(opts)
-				end,
-				['tsserver'] = function()
-					local opts = get_server_options('tsserver')
-
-					if pcall(require, 'typescript') then
-						require('typescript').setup({ server = opts })
-					else
-						require('lspconfig')['tsserver'].setup(opts)
-					end
 				end,
 				['rust_analyzer'] = function()
 					local opts = get_server_options('rust_analyzer')
