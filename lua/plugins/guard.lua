@@ -23,10 +23,11 @@ return {
 			gft('sh'):fmt(shfmt)
 		end,
 		opts = {
-			format_on_save = true
+			format_on_save = true,
+			lsp_as_default_formatter = true
 		},
 		keys = {
-			{'<leader>f', '<cmd>GuardFmt<cr>', { desc = 'Guard: [F]ormat'}}
+			{ '<leader>f', '<cmd>GuardFmt<cr>', { desc = 'Guard: [F]ormat' } }
 		}
 	},
 }
