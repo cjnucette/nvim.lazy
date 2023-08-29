@@ -6,7 +6,6 @@ return {
 	dependencies = {
 		'windwp/nvim-ts-autotag',
 		'JoosepAlviste/nvim-ts-context-commentstring',
-		'HiPhish/nvim-ts-rainbow2'
 	},
 	keys = {
 		{ '<C-space>', desc = 'Treesitter: Increment selection' },
@@ -17,42 +16,13 @@ return {
 		require('nvim-treesitter.configs').setup {
 			highlight = { enable = true },
 			indent = { enable = true },
+			sync_install = false,
+			modules = {},
+			ignore_install = {},
+			auto_install = true,
+			ensure_installed = {'lua', 'vim'},
 			autotag = { enable = true },
 			context_commentstring = { enable = true },
-			auto_install = true,
-			ensure_installed = {
-				'lua',
-				'rust',
-				'javascript',
-				'typescript',
-				'tsx',
-				'vimdoc',
-				'bash',
-				'css',
-				'html',
-				'markdown',
-				'markdown_inline',
-				'regex',
-				'vim',
-				'http',
-				'svelte',
-				'astro',
-				'nix'
-			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = '<C-space>',
-					node_incremental = '<C-space>',
-					scope_incremental = '<C-s>',
-					node_decremental = '<bs>',
-				},
-			},
-			rainbow = {
-				enable = true,
-				disable = { 'html' },
-				strategy = require('ts-rainbow.strategy.local')
-			}
 		}
 	end
 }
