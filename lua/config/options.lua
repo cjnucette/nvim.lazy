@@ -40,7 +40,7 @@ vim.opt.splitright = true
 vim.opt.wrap = false
 vim.opt.breakindent = true
 
-vim.opt.digraph = true
+vim.opt.digraph = false
 vim.opt.nrformats:append({ 'alpha' })
 
 vim.opt.ignorecase = false
