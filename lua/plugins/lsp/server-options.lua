@@ -2,13 +2,14 @@ local M = {}
 local utils = require('plugins.lsp.utils')
 -- tsserver
 local inlay_hints = {
-	includeInlayEnumMemberValueHints = true,
-	includeInlayFunctionLikeReturnTypeHints = true,
-	includeInlayFunctionParameterTypeHints = true,
 	includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
 	includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-	includeInlayPropertyDeclarationTypeHints = true,
+	includeInlayFunctionParameterTypeHints = true,
 	includeInlayVariableTypeHints = true,
+	includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+	includeInlayPropertyDeclarationTypeHints = true,
+	includeInlayFunctionLikeReturnTypeHints = true,
+	includeInlayEnumMemberValueHints = true,
 }
 
 M.options = {
@@ -20,9 +21,9 @@ M.options = {
 	--
 	-- 	settings = {
 	-- 		css = {
-	-- 			-- lint = {
-	-- 			-- 	unknownAtRules = 'ignore'
-	-- 			-- },
+	-- 			lint = {
+	-- 				unknownAtRules = 'ignore'
+	-- 			},
 	-- 			format = {
 	-- 				enable = true
 	-- 			}
@@ -70,7 +71,7 @@ M.options = {
 			json = {
 				schemas = require('schemastore').json.schemas(),
 				validate = { enable = true },
-				-- format = { enable = true },
+				format = { enable = true },
 			}
 		}
 	},
@@ -132,7 +133,7 @@ M.options = {
 			require('twoslash-queries').attach(client, bufnr)
 		end),
 		root_dir = require('lspconfig.util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
-		single_file_support = not require('lspconfig.util').root_pattern('deno.json*'),
+		-- single_file_support = not require('lspconfig.util').root_pattern('deno.json*'),
 
 		settings = {
 			javascript = {
