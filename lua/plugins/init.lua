@@ -35,17 +35,17 @@ return {
 		event = { 'BufReadPre', 'BufNewFile' },
 		opts = { check_ts = true }
 	},
-	{
-		'lvimuser/lsp-inlayhints.nvim',
-		opts = {
-			inlay_hints = {
-				type_hints = {
-					separator = ''
-				},
-				only_current_line = true
-			}
-		}
-	},
+	-- {
+	-- 	'lvimuser/lsp-inlayhints.nvim',
+	-- 	opts = {
+	-- 		inlay_hints = {
+	-- 			type_hints = {
+	-- 				separator = ''
+	-- 			},
+	-- 			only_current_line = true
+	-- 		}
+	-- 	}
+	-- },
 	{
 		'stevearc/oil.nvim',
 		opts = {},

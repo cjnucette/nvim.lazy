@@ -7,7 +7,7 @@ local M = {
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
 			'simrat39/rust-tools.nvim',
-			'lvimuser/lsp-inlayhints.nvim',
+			-- 'lvimuser/lsp-inlayhints.nvim',
 			'marilari88/twoslash-queries.nvim'
 		},
 		config = function()
@@ -72,7 +72,6 @@ local M = {
 				'emmet_language_server',
 				'jsonls',
 				'bashls',
-				'denols',
 				'rust_analyzer',
 				'eslint',
 				'svelte',
