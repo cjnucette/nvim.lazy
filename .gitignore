@@ -4,3 +4,4 @@ mason/
 lazy-lock.json
 *.bak
 .env
+example.lua
