@@ -1,14 +1,10 @@
-local M = {
+return  {
 	'lukas-reineke/indent-blankline.nvim',
 	event = { 'BufRead', 'BufNewFile' },
+	main = 'ibl',
+	opts = {
+		exclude = {
+			filetypes = { 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason' },
+		},
+	},
 }
-
-function M.config()
-	require('indent_blankline').setup({
-		filetype_exclude = { 'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason' },
-		show_current_context = false,
-		show_current_context_start = false,
-	})
-end
-
-return M
