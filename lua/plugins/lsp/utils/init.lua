@@ -7,9 +7,9 @@ M.on_attach = function(on_attach)
 		require('plugins.lsp.autocmds').setup(client, bufnr)
 
 		-- inlayhints
-		if client.server_capabilities.inlayHintProvider then
-			require('lsp-inlayhints').on_attach(client, bufnr, true)
-		end
+		-- if client.server_capabilities.inlayHintProvider then
+		-- 	require('lsp-inlayhints').on_attach(client, bufnr, true)
+		-- end
 
 		if on_attach then on_attach(client, bufnr) end
 	end
