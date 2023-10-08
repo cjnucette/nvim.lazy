@@ -1,6 +1,7 @@
 local M = {
 	'mattn/emmet-vim',
-	ft = { 'html', 'css', 'scss', 'javascriptreact', 'jsx', 'typescriptreact', 'tsx' }
+	ft = { 'html', 'css', 'scss', 'javascriptreact', 'jsx', 'typescriptreact', 'tsx' },
+	enabled = false,
 }
 
 function M.init()
