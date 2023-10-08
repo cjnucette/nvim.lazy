@@ -16,6 +16,13 @@ return {
 			desc = 'NeoTree: Toggle file explorer'
 		},
 		{
+			'<leader>ef',
+			'<cmd>Neotree toggle float<CR>',
+			noremap = true,
+			silent = true,
+			desc = 'NeoTree: Toggle file explorer'
+		},
+		{
 			'<leader>el',
 			'<cmd>Neotree toggle left<CR>',
 			noremap = true,
