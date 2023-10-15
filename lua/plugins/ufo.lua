@@ -41,23 +41,23 @@ return {
 			{ 'zK', function() require('ufo').peekFoldedLinesUnderCursor() end,
 				{ desc = 'UFO: Peek folded lines under the cursor' } },
 		},
-		config = function()
+		init = function()
 			vim.opt.foldcolumn = '1'
 			vim.opt.foldlevel = 99
 			vim.opt.foldlevelstart = 99
 			vim.opt.foldenable = true
 			vim.opt.fillchars:append({ foldclose = '', foldopen = '›' })
-
-			require('ufo').setup({
-				fold_virt_text_handler = handler,
-				provider_selector = function(_, _, _)
-					return { 'treesitter', 'indent' }
-				end
-			})
-		end
+		end,
+		opts = {
+			fold_virt_text_handler = handler,
+			provider_selector = function(_, _, _)
+				return { 'treesitter', 'indent' }
+			end
+		}
 	},
 	{
 		'luukvbaal/statuscol.nvim',
+		-- enabled = false, -- check later if updated
 		opts = function()
 			local builtin = require('statuscol.builtin')
 			return {
