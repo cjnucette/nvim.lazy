@@ -1,3 +1,7 @@
+if vim.loader then
+	vim.loader.enable()
+end
+
 -- load options here, so options are correctly applied
 require('config.options')
 
