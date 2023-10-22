@@ -16,14 +16,14 @@ vim.opt.runtimepath:prepend(lazypath)
 -- Install plugins
 local opts = {
 	root = vim.fn.stdpath('config') .. '/lazy',
-	defaults = { lazy = true, version = false },
+	-- defaults = { lazy = true, version = false },
 	install = { colorscheme = { 'tokyonight' } },
 	checker = { enabled = true },
 	change_detection = {
 		notify = false
 	},
 	dev = {
-		path = '~/Workspace/code/nvim/cjnucette'
+		path = '~/Workspaces/Development/nvim/cjnucette'
 	},
 	peformance = {
 		rtp = {
