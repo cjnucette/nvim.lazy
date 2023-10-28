@@ -51,7 +51,7 @@ return {
 		opts = {
 			fold_virt_text_handler = handler,
 			provider_selector = function(_, _, _)
-				return { 'treesitter', 'indent' }
+				return { 'lsp', 'indent' }
 			end
 		}
 	},
