@@ -113,6 +113,8 @@ M.options = {
 					enable = true,
 					disable = {
 						'different-requires',
+						'missing-fields',
+						'incomplete-signature-doc'
 					},
 					globals = { 'vim', 'P', 'R', 'it', 'describe', 'before_each', 'after_each' },
 				},
