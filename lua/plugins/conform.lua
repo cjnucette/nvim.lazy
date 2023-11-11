@@ -2,14 +2,15 @@ return {
 	'stevearc/conform.nvim',
 	opts = {
 		formatters_by_ft = {
-			html = {'prettier'},
-			astro = {'prettier'},
-			json = {'prettier'},
-			javascript = {'prettier'},
-			typescript = {'prettier'},
-			javascriptreact = {'prettier'},
-			typescriptreact = {'prettier'},
-			sh = {'shfmt'}
+			html = { 'prettier' },
+			css = { 'prettier' },
+			javascript = { 'prettier' },
+			typescript = { 'prettier' },
+			javascriptreact = { 'prettier' },
+			typescriptreact = { 'prettier' },
+			astro = { 'prettier' },
+			json = { 'prettier' },
+			sh = { 'shfmt' }
 		},
 		format_on_save = {
 			timeout_ms = 500,
