@@ -1,10 +1,11 @@
-return  {
+return {
 	'lukas-reineke/indent-blankline.nvim',
 	event = { 'BufRead', 'BufNewFile' },
 	main = 'ibl',
 	opts = {
+		enabled = true,
 		exclude = {
-			filetypes = { 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason' },
+			filetypes = { 'neo-tree', 'lazy', 'mason' },
 		},
 	},
 }
