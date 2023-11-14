@@ -19,7 +19,10 @@ function M.setup(bufnr)
 	nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
 	nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 	nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-	nmap('<leader>ti', function() vim.lsp.inlay_hint(0, nil) end, '[T]oggle [I]nlay hints')
+	nmap('<leader>ti', function()
+		local toggle = not vim.lsp.inlay_hint.is_enabled()
+		vim.lsp.inlay_hint.enable(nil, toggle)
+		end, '[T]oggle [I]nlay hints')
 
 	-- See `:help K` for why this keymap
 	nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -31,7 +34,7 @@ function M.setup(bufnr)
 	nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
 	nmap('<leader>wl', function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, '[W]orkspace [L]ist Folders')
+	end, '[W]orkspace [L]ist Folders')
 end
 
 return M
