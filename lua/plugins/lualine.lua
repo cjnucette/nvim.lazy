@@ -12,7 +12,7 @@ function M.config()
 	local lualine = require('lualine')
 	local signs = require('utils').signs
 	local capitalize = require('utils').capitalize
-	local lsp_attached = require('utils').lsp_attached
+	-- local lsp_attached = require('utils').lsp_attached
 	local get_color = require('utils').get_color
 
 	local main_color = 'StatusLine'
@@ -93,22 +93,30 @@ function M.config()
 		-- cond = has_space,
 	}
 
-	-- local encoding = {
-	-- 	'encoding',
-	-- 	fmt = string.upper,
-	-- 	cond = has_space
-	-- }
-	--
-	-- local fileformat = {
-	-- 	'fileformat',
-	-- 	cond = has_space
-	-- }
-	--
-	-- local function spaces()
-	-- 	local msg = 'Spaces: '
-	-- 	if not has_space() then msg = 'S: ' end
-	-- 	return msg .. vim.opt.shiftwidth:get()
-	-- end
+	local function package_info()
+		if not has_space() then
+			return ''
+		end
+		return require('package-info').get_status()
+	end
+
+	local function get_lsp_name()
+		if not has_space() then
+			return ''
+		end
+
+		local client_name = vim.lsp.get_clients({ bufnr = 0 })[1]
+
+		return client_name.name
+	end
+
+	local function my_location()
+		if has_space() then
+			return 'Ln %l,Col %c'
+		else
+			return '%l,%c'
+		end
+	end
 
 	local filetype = {
 		'filetype',
@@ -123,30 +131,14 @@ function M.config()
 				output = capitalize(str)
 			end
 
-			if lsp_attached() then
-				local space = has_space() and ' ' or ''
-				output = output .. space .. ''
-			end
+			-- if lsp_attached() then
+			-- 	local space = has_space() and ' ' or ''
+			-- 	output = output .. space .. ''
+			-- end
 
 			return output
 		end
 	}
-
-	local function my_location()
-		if has_space() then
-			return 'Ln %l,Col %c'
-		else
-			return '%l,%c'
-		end
-	end
-
-
-	local function package_info()
-		if not has_space() then
-			return ''
-		end
-		return require('package-info').get_status()
-	end
 
 	local function clock()
 		if not has_space() then
@@ -261,18 +253,25 @@ function M.config()
 					require('lazy.status').updates,
 					cond = require('lazy.status').has_updates
 				},
-				package_info
-			},
-			lualine_x = {
+				package_info,
+				get_lsp_name,
 				{
 					'lsp_progress',
 					separators = {
-						lsp_client_name = { pre = ' ', post = '' }
+						-- lsp_client_name = { pre = ' ', post = '' }
+						lsp_client_name = { pre = '', post = '' }
 					},
 					hide = { 'null-ls' },
+					spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
 					only_show_attached = true,
-					display_components = { 'lsp_client_name', { 'percentage' } }
+					-- display_components = { 'lsp_client_name', { 'percentage' } }
+					display_components = { 'spinner' },
+					timer = {
+						lsp_client_name_enddelay = 0
+					}
 				},
+			},
+			lualine_x = {
 				my_location
 			},
 			-- lualine_y = { spaces, encoding, fileformat },
