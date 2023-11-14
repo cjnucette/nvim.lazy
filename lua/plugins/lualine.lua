@@ -105,9 +105,24 @@ function M.config()
 			return ''
 		end
 
+		local mt = { __index = function(_t, k) return k end }
+		local server_names = {
+			lua_ls = 'lua-language-server',
+			rust_analyzer = 'rust-analyzer',
+			html = 'html-lsp',
+			jsonls = 'json-lsp',
+			cssls = 'css-lsp',
+			ltex = 'ltex-lsp',
+			svelte = 'svelte-language-server',
+			tsserver = 'typescript-language-server',
+			vimls = 'vim-language-server',
+			dockerls = 'dockerfile-language-server',
+		}
+		setmetatable(server_names, mt)
+
 		local client_name = vim.lsp.get_clients({ bufnr = 0 })[1]
 
-		return client_name.name
+		return server_names[client_name.name]
 	end
 
 	local function my_location()
@@ -261,8 +276,9 @@ function M.config()
 						-- lsp_client_name = { pre = ' ', post = '' }
 						lsp_client_name = { pre = '', post = '' }
 					},
-					hide = { 'null-ls' },
-					spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
+					hide = { 'null-ls', 'emmet_language_server', 'eslint' },
+					-- spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
+					spinner_symbols = { '✶', '✸', '✹', '✺', '✹', '✸', '✷' },
 					only_show_attached = true,
 					-- display_components = { 'lsp_client_name', { 'percentage' } }
 					display_components = { 'spinner' },
