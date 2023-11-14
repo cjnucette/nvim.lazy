@@ -69,5 +69,9 @@ return {
 		map('n', '<A-n>', nodeToggle, { desc = 'Toggleterm: Open node REPL' })
 		map('n', '<A-d>', denoToggle, { desc = 'Toggleterm: Open deno REPL' })
 		map('n', '<A-l>', lazygitToggle, { desc = 'Toggleterm: Open lazygit' })
+		map('n', '<leader>tv', '<cmd>ToggleTerm direction=vertical<cr>',
+			{ desc = 'Toggleterm: [T]oggle vertical terminal' })
+		map('n', '<leader>th', '<cmd>ToggleTerm direction=horizontal<cr>',
+			{ desc = 'Toggleterm: [T]oggle horizontal terminal' })
 	end
 }
