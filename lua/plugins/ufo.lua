@@ -63,9 +63,9 @@ return {
 			return {
 				relculright = true,
 				segments = {
+					{ text = { ' ', builtin.foldfunc, ' ' }, click = 'v:lua.ScFa' },
 					{ text = { '%s' }, click = 'v:lua.ScSa' },
 					{ text = { builtin.lnumfunc }, click = 'v:lua.ScLa' },
-					{ text = { ' ', builtin.foldfunc, ' ' }, click = 'v:lua.ScFa' },
 				}
 			}
 		end
