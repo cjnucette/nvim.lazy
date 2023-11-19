@@ -105,7 +105,7 @@ function M.config()
 			return ''
 		end
 
-		local mt = { __index = function(_t, k) return k end }
+		local mt = { __index = function(_, k) return k end }
 		local server_names = {
 			lua_ls = 'lua-language-server',
 			rust_analyzer = 'rust-analyzer',
@@ -164,17 +164,17 @@ function M.config()
 	end
 
 	-- extensions
-	local neo_tree = {
+	local file_explorer = {
 		sections = {
 			lualine_a = {
 				{
 					'file_explorer',
-					fmt = function() return 'NeoTree%=' end,
+					fmt = function() return 'File Explorer%=' end,
 					icon = { '📂', color = { fg = 'orange' } },
 				}
 			}
 		},
-		filetypes = { 'neo-tree' }
+		filetypes = { 'neo-tree', 'oil' }
 	}
 
 	local toggleterm = {
@@ -294,7 +294,7 @@ function M.config()
 			lualine_y = {},
 			lualine_z = { filetype, clock }
 		},
-		extensions = { neo_tree, toggleterm, package_manager, telescope, mason, checkhealth }
+		extensions = { file_explorer, toggleterm, package_manager, telescope, mason, checkhealth }
 	})
 end
 
