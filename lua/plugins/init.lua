@@ -46,13 +46,13 @@ return {
 	-- 		}
 	-- 	}
 	-- },
-	{
-		'stevearc/oil.nvim',
-		opts = {},
-		keys = {
-			{ '-', function() require('oil').open() end, desc = '[Oil] open oil buffer' },
-		}
-	},
+	-- {
+	-- 	'stevearc/oil.nvim',
+	-- 	opts = {},
+	-- 	keys = {
+	-- 		{ '-', function() require('oil').open() end, desc = '[Oil] open oil buffer' },
+	-- 	}
+	-- },
 	-- dev
 	{ 'cjnucette/scripts.nvim', dev = true }
 }
