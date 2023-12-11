@@ -57,7 +57,7 @@ return {
 	},
 	{
 		'luukvbaal/statuscol.nvim',
-		-- enabled = false, -- check later if updated
+		enabled = false, -- check later nvim bug?
 		opts = function()
 			local builtin = require('statuscol.builtin')
 			return {
