@@ -3,17 +3,17 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local user_cmds = augroup('user_autocommands', { clear = true })
 autocmd(
-'FileType',
+	'FileType',
 	{
 		desc = 'Use q to close the window',
 		group = user_cmds,
-		pattern = { 'help', 'man', 'fugitive', 'qf', 'notify', 'lspinfo', 'checkhealth', 'git' },
+		pattern = { 'oil', 'help', 'man', 'fugitive', 'qf', 'notify', 'lspinfo', 'checkhealth', 'git' },
 		command = 'nnoremap <buffer> q :quit<cr>'
 	}
 )
 
 autocmd(
-'TextYankPost',
+	'TextYankPost',
 	{
 		desc = 'Highlight yanked objects',
 		group = user_cmds,
