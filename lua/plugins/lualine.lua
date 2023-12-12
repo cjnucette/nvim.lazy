@@ -125,6 +125,10 @@ function M.config()
 		return server_names[client_name.name]
 	end
 
+	local function maximize_status()
+		return vim.t.maximized and ' ' or ''
+	end
+
 	local function my_location()
 		if has_space() then
 			return 'Ln %l,Col %c'
@@ -288,6 +292,7 @@ function M.config()
 				},
 			},
 			lualine_x = {
+				maximize_status,
 				my_location
 			},
 			-- lualine_y = { spaces, encoding, fileformat },
