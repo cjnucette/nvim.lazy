@@ -28,31 +28,15 @@ return {
 	'b0o/schemastore.nvim',
 	{ 'rafcamlet/nvim-luapad', cmd = { 'Luapad', 'LuaRun' } },
 	{ 'tpope/vim-fugitive', cmd = 'G' },
-	-- {ys,cs,ds} + motion, S + selection
+	-- add ys, change cs, delete ds + char + motion, selection + S char, yss + char entire line.
+	-- yst, cst, dst to add, change, or remove html tags
+	-- ysa + curr char + new char to surround a surrounded token
 	{ 'kylechui/nvim-surround', version = '*', config = true, event = 'InsertEnter' },
 	{
 		'windwp/nvim-autopairs',
 		event = { 'BufReadPre', 'BufNewFile' },
 		opts = { check_ts = true }
 	},
-	-- {
-	-- 	'lvimuser/lsp-inlayhints.nvim',
-	-- 	opts = {
-	-- 		inlay_hints = {
-	-- 			type_hints = {
-	-- 				separator = ''
-	-- 			},
-	-- 			only_current_line = true
-	-- 		}
-	-- 	}
-	-- },
-	-- {
-	-- 	'stevearc/oil.nvim',
-	-- 	opts = {},
-	-- 	keys = {
-	-- 		{ '-', function() require('oil').open() end, desc = '[Oil] open oil buffer' },
-	-- 	}
-	-- },
 	-- dev
 	{ 'cjnucette/scripts.nvim', dev = true }
 }
