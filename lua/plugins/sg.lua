@@ -4,6 +4,7 @@ return {
 		'sourcegraph/sg.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' },
 		lazy = false,
+		enabled = false,
 		keys = {
 			{
 				'<leader>ss',
