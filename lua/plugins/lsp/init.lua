@@ -7,28 +7,13 @@ local M = {
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
 			'simrat39/rust-tools.nvim',
-			-- 'lvimuser/lsp-inlayhints.nvim',
 			'marilari88/twoslash-queries.nvim'
 		},
 		config = function()
-			local lsp_utils = require('plugins.lsp.utils')
-			-- lspinfo window border
 			require('lspconfig.ui.windows').default_options.border = 'rounded'
-			-- set diagnostics options
 			require('plugins.lsp.diagnostics').setup()
-			-- used by setup_handlers
-			local server_options = require('plugins.lsp.server-options').options
-			local function get_server_options(server)
-				local lsp_opts = {
-					on_attach = lsp_utils.on_attach(),
-					capabilities = lsp_utils.capabilities(),
-					handlers = lsp_utils.handlers()
-				}
-				return server_options[server]
-					and vim.tbl_deep_extend('force', lsp_opts, server_options[server])
-					or lsp_opts
-			end
-			-- automatic server configuration
+			local get_server_options = require('plugins.lsp.server-options').get_server_options
+
 			require('mason-lspconfig').setup_handlers({
 				function(lsp)
 					local opts = get_server_options(lsp)

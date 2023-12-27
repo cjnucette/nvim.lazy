@@ -1,5 +1,5 @@
 local M = {}
-local utils = require('plugins.lsp.utils')
+local lsp_utils = require('plugins.lsp.utils')
 -- tsserver
 local inlay_hints = {
 	includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
@@ -12,7 +12,7 @@ local inlay_hints = {
 	includeInlayEnumMemberValueHints = true,
 }
 
-M.options = {
+local options = {
 	-- ['cssls'] = {
 	-- 	on_attach = utils.on_attach(function(client, _)
 	-- 		client.server_capabilities.documentFormattingProvider = true
@@ -31,8 +31,8 @@ M.options = {
 	-- 	}
 	-- },
 	-- ['html'] = {
-	-- 	on_attach = utils.on_attach(function(client, _)
 	-- 		client.server_capabilities.documentFormattingProvider = true
+	-- 	on_attach = utils.on_attach(function(client, _)
 	-- 		client.server_capabilities.documentRangeFormattingProvider = true
 	-- 	end),
 	--
@@ -84,7 +84,7 @@ M.options = {
 		}
 	},
 	['lua_ls'] = {
-		on_attach = utils.on_attach(function(client, _)
+		on_attach = lsp_utils.on_attach(function(client, _)
 			client.server_capabilities.documentFormattingProvider = true
 			client.server_capabilities.documentRangeFormattingProvider = true
 		end),
@@ -131,7 +131,7 @@ M.options = {
 
 	},
 	['tsserver'] = {
-		on_attach = utils.on_attach(function(client, bufnr)
+		on_attach = lsp_utils.on_attach(function(client, bufnr)
 			require('twoslash-queries').attach(client, bufnr)
 		end),
 		root_dir = require('lspconfig.util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
@@ -147,4 +147,16 @@ M.options = {
 		},
 	}
 }
+
+M.get_server_options = function(server)
+	local lsp_opts = {
+		on_attach = lsp_utils.on_attach(),
+		capabilities = lsp_utils.capabilities(),
+		handlers = lsp_utils.handlers()
+	}
+	return options[server]
+		and vim.tbl_deep_extend('force', lsp_opts, options[server])
+		or lsp_opts
+end
+
 return M
