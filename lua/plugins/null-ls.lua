@@ -1,15 +1,11 @@
 return {
 	{
-		'jose-elias-alvarez/null-ls.nvim',
+		-- 'jose-elias-alvarez/null-ls.nvim',
+		'nvimtools/none-ls.nvim',
 		event = { 'BufReadPre', 'BufNewFile' },
-		enabled = false,
-		dependencies = {
-			'jose-elias-alvarez/typescript.nvim',
-			'jay-babu/mason-null-ls.nvim',
-		},
+		-- enabled = false,
 		config = function()
 			local nls = require('null-ls')
-			local mnls = require('mason-null-ls')
 
 			local prettier_conf = function()
 				local options = {
@@ -53,16 +49,27 @@ return {
 					formatting.prettier.with(prettier_conf()),
 					formatting.shfmt.with(shfmt_conf()),
 					code_actions.gitsigns,
-					require('typescript.extensions.null-ls.code-actions'),
-
 				},
 				update_in_insert = false
 			})
-			mnls.setup({
-				ensure_installed = { 'prettier', 'shfmt' },
-				automatic_setup = true,
-				handlers = {}
-			})
 		end,
+
+		keys = {
+			{
+				'<leader>f',
+				vim.lsp.buf.format,
+				mode = { 'n', 'v' },
+				desc = 'None-ls: [F]ormat buffer'
+			},
+			{
+				'<leader>fs',
+				function()
+					vim.lsp.buf.format()
+					vim.cmd.w()
+				end,
+				mode = { 'n', 'v' },
+				desc = 'None-ls: [F]ormat and [S]ave buffer'
+			}
+		},
 	},
 }
