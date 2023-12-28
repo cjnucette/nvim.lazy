@@ -120,9 +120,20 @@ function M.config()
 		}
 		setmetatable(server_names, mt)
 
-		local client_name = vim.lsp.get_clients({ bufnr = 0 })[1]
+		-- local client_name = vim.lsp.get_clients({ bufnr = 0 })[1]
+		-- return server_names[client_name.name]
 
-		return server_names[client_name.name]
+		local hide = { 'null-ls', 'emmet_language_server' }
+		local client_name = vim.lsp.get_clients({ bufnr = 0 })
+
+		local client_names = ''
+		for _, name in ipairs(client_name) do
+			if not vim.tbl_contains(hide, name.name) then
+				client_names = client_names .. '  ' .. server_names[name.name]
+			end
+		end
+
+		return vim.trim(client_names)
 	end
 
 	local function maximize_status()
