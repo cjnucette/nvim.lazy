@@ -6,7 +6,8 @@ M.config = function()
 	require('ccc').setup({
 		highlighter = {
 			auto_enable = true,
-			excludes = { 'help', 'lazy' }
+			excludes = { 'help', 'lazy' },
+			lsp = true,
 		}
 	})
 
