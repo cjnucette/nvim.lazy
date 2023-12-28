@@ -19,9 +19,6 @@ return {
 			lsp_fallback = true,
 			async = false,
 		},
-		-- format_after_save = {
-		-- 	lsp_fallback = true,
-		-- }
 	},
 	keys = {
 		{
